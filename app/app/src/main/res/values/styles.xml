@@ -39,7 +39,7 @@
     <style name="ModelProfileValueTextView" parent="@style/fontFamily">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/model_detail_profile_value_color</item>
@@ -57,7 +57,7 @@
     <style name="ModelProfileValueDescriptionView" parent="@style/fontFamily">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/model_detail_profile_description_color</item>
     </style>
@@ -71,6 +71,19 @@
         <item name="android:padding">10dp</item>
         <item name="layout_constraintVertical_bias">0.5</item>
         <item name="layout_constraintWidth_percent">0.33333</item>
+    </style>
+
+    <style name="inputTextView">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/gray</item>
+        <item name="helperTextTextColor">@color/gray</item>
+        <item name="errorTextColor">@color/colorPrimary</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
     </style>
 
 </resources>
