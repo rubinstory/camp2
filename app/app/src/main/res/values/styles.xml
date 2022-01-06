@@ -6,6 +6,9 @@
 <!--    app:layout_constraintTop_toTopOf="parent"-->
 
 <resources>
+    <style name="fontFamily">
+        <item name="android:fontFamily">@font/open_sans</item>
+    </style>
     <style name="ModelProfileView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -28,7 +31,7 @@
         <item name="layout_constraintWidth_percent">0.33333</item>
     </style>
 
-    <style name="ModelProfileValueTextView">
+    <style name="ModelProfileValueTextView" parent="@style/fontFamily">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textSize">30sp</item>
@@ -37,7 +40,7 @@
         <item name="android:textColor">@color/model_detail_profile_value_color</item>
     </style>
 
-    <style name="ModelProfileNameTextView">
+    <style name="ModelProfileNameTextView" parent="@style/fontFamily">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textSize">35sp</item>
@@ -46,7 +49,7 @@
         <item name="android:textColor">@color/model_detail_profile_value_color</item>
     </style>
 
-    <style name="ModelProfileValueDescriptionView">
+    <style name="ModelProfileValueDescriptionView" parent="@style/fontFamily">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textSize">17sp</item>
