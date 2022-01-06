@@ -139,3 +139,4 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AUTH_USER_MODEL = 'accounts.User'
+AUTH_SUPER_USER_MODEL = 'accounts.User'
