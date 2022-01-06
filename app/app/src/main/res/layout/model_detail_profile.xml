@@ -70,5 +70,4 @@
                 android:text="Los Angeles" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </LinearLayout>
