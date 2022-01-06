@@ -9,6 +9,13 @@
     <style name="fontFamily">
         <item name="android:fontFamily">@font/open_sans</item>
     </style>
+
+    <style name="tabTextStyle">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="ModelProfileView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
