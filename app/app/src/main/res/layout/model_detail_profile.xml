@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/model_profile_view">
 
@@ -24,8 +24,9 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/ModelProfileImgCardView"
             android:id="@+id/model_detail_img_cardview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@id/model_detail_followers">
             <include
                 android:id="@+id/profile_circle_view"
@@ -48,17 +49,21 @@
         android:id="@+id/model_profile_name_view"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/model_detail_profile_information">
         <LinearLayout
-            android:id="@+id/model_detail_name"
+            android:id="@+id/model_detail_name_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintWidth_percent="1.0">
             <TextView
+                android:id="@+id/model_detail_name"
                 style="@style/ModelProfileNameTextView"
+                android:textSize="25dp"
                 android:text="SARAH GELLER"/>
             <TextView
+                android:id="@+id/model_detail_country"
                 style="@style/ModelProfileValueDescriptionView"
                 android:text="Paris" />
         </LinearLayout>
