@@ -7,11 +7,11 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(
             email =validated_data['email'],
             nickname =validated_data['nickname'],
-            name =validated_data['name'],
+            # name =validated_data['name'],
             password =validated_data['password']
         )
         return user
 
     class Meta:
         model = User
-        fields = ['nickname', 'email', 'name', 'password']
+        fields = ['nickname', 'email', 'password']
