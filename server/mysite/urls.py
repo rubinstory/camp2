@@ -19,13 +19,13 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('agency.urls')),
+    path('', include('agency.urls')),
     # path('user/', include('accounts.urls')),
     # path('dj-rest-auth/', include('dj_rest_auth.urls')),
     # path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     # # path('accounts/', include('dj_rest_auth.urls')),
     # # path('accounts/', include('dj_rest_auth.urls')),
-    # # path('accounts/', include('dj_rest_auth.registration.urls')),
+    path('accounts/', include('dj_rest_auth.registration.urls')),
     # path('accounts/', include('allauth.urls')),
     # path('accounts/', include('accounts.urls')),
     

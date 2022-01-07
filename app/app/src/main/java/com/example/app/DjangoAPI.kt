@@ -13,4 +13,7 @@ interface DjangoAPI {
 
     @GET("/agency/Influencers/{id}")
     fun get_influencer_by_pk(@Header("Authorization") token: String, @Path("id") id:Int): Call<InfluencerItem>
+
+    @POST("accounts/")
+    fun register_new_user(@Body newUser: RegisterItem): Call<RegisterItem>
 }

@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.MediaController
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.app.databinding.MainFragmentBinding
 import com.example.app.databinding.ModelDetailFragmentBinding
 import retrofit2.Call
@@ -32,12 +33,15 @@ class MainFragment : Fragment() {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
 
         binding.descriptionTextView.visibility = TextView.INVISIBLE
+//        binding.modelProfileItem.modelProfileItem.visibility = ConstraintLayout.INVISIBLE
         var animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {}
             override fun onAnimationEnd(p0: Animation?) {
                 binding.descriptionTextView.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
                 binding.descriptionTextView.visibility = TextView.VISIBLE
+//                binding.modelProfileItem.modelProfileItem.visibility = ConstraintLayout.VISIBLE
+//                binding.modelProfileItem.modelProfileItem.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
             }
             override fun onAnimationRepeat(p0: Animation?) {}
         })
