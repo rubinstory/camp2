@@ -1,4 +1,5 @@
-from django.conf.urls import url, include
+from django.conf.urls import include
+from django.urls import path
 from django.contrib import admin
 from rest_framework import routers
 from agency.views import InfluencerViewSet
@@ -8,6 +9,6 @@ router = routers.DefaultRouter()
 router.register('Influencers', InfluencerViewSet)
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]
