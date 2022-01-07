@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #Signup
     'rest_auth',
     'rest_auth.registration',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
