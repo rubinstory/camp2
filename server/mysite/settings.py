@@ -38,13 +38,61 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'django.contrib.sites',
+    #app
     'agency',
     'accounts',
-    #Signup
-    'rest_auth',
-    'rest_auth.registration',
+    #django-rest-auth
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt.token_blacklist',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    #django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    
 ]
+
+######django-allauth#####
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL= True
+ACCOUNT_USERNAME_REQUIRED=True
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+#########JWT################ 
+REST_USE_JWT = True
+#default: only permitted user can access
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
+}
+
+SITE_ID = 1
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3), #how long access tokens are valid
+    'REFRESH_TOKEN_LIFETIME': timedelta (days=7),  #how long refresh tokens are valid
+    'ROTATE_REFRESH_TOKENS' : False,
+    'BLACKLIST_AFTER_ROTATION' : True, 
+}
+
+AUTH_USER_MODEL = 'accounts.User'
+AUTH_SUPER_USER_MODEL = 'accounts.User'
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,9 +182,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world') 
 # LOGOUT_REDIRECT_URL =reverse_lazy('accountapp:login') 
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend',
+# )
 
-AUTH_USER_MODEL = 'accounts.User'
-AUTH_SUPER_USER_MODEL = 'accounts.User'
+
+

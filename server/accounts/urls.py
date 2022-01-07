@@ -1,9 +1,13 @@
-from django.urls import path, include
-from . import views
-from rest_framework import urls
+from django.conf.urls import url, include
+from django.contrib import admin
+from rest_framework import routers
+from accounts.views import UserCreate
+from rest_framework import viewsets
 
+router = routers.DefaultRouter()
+router.register('usercreate', UserCreate)
 
 urlpatterns = [
-    path('signup/', views.UserCreate.as_view()),
-    path('api-auth/', include('rest_framework.urls')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^', include(router.urls)),
 ]
