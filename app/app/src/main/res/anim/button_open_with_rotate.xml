@@ -6,7 +6,7 @@
         android:pivotX="50%"
         android:pivotY="50%"
         android:toDegrees="360"
-        android:duration="300"
+        android:duration="500"
         />
     <alpha
         android:fromAlpha="1"

@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/dropdown_menu_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        app:fabSize="mini"
+        android:elevation="10dp"
+        android:src="@drawable/square"
+        app:backgroundTint="@color/black"
+        app:tint="@color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/dropdown_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        app:fabSize="mini"
+        android:elevation="10dp"
+        android:src="@drawable/lock"
+        android:visibility="invisible"
+        app:backgroundTint="@color/black"
+        app:tint="@color/white"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/dropdown_search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown_login_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        app:fabSize="mini"
+        android:elevation="10dp"
+        android:src="@drawable/search"
+        android:visibility="invisible"
+        app:backgroundTint="@color/black"
+        app:tint="@color/white"/>
 
     <FrameLayout
         android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="1.0"
+        app:layout_constraintHeight_percent="1.0" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <include-->
+    <!--        android:id="@+id/top_bar_with_back_btn"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        app:layout_constraintWidth_percent="1.0"-->
+    <!--        app:layout_constraintHeight_percent="0.1"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        layout="@layout/top_bar_with_side_menu"/>-->
