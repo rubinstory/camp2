@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:layout="http://schemas.android.com/tools"
     android:background="@color/black">
-    <include
-        android:id="@+id/top_bar_with_back_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent="1.0"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/top_bar_with_side_menu"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/model_profile_viewpager"
         app:layout_constraintWidth_percent="1.0"
-        app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_with_back_btn">
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -30,11 +23,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             </LinearLayout>
+<!--            <include-->
+<!--                android:id="@+id/model_profile_item"-->
+<!--                layout="@layout/model_profile_item"/>-->
         </LinearLayout>
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+<!--        <androidx.viewpager2.widget.ViewPager2-->
+<!--            android:id="@+id/viewpager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
