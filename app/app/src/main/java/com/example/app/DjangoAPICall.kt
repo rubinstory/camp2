@@ -16,5 +16,6 @@ class DjangoAPICall {
 
     companion object {
         lateinit var API: DjangoAPI
+        var token: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNTcwNjIwLCJqdGkiOiJlYmUwNjU5OWFjMWM0NTA1YjcxYmQyMjgzNWQ4N2QwOSIsInVzZXJfaWQiOjN9.QyvCW3KKrQTu21xWoumLuGL-_OeOkm-N8J-tKXzZbAA"
     }
 }

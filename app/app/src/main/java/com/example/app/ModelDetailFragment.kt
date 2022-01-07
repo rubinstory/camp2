@@ -69,9 +69,8 @@ class ModelDetailFragment : Fragment() {
         binding.modelProfileView.modelDetailName.text = myInfluencer.full_name
         binding.modelProfileView.modelDetailCountry.text = myInfluencer.country
     }
-
     fun loadInfluencer() {
-        var call: Call<InfluencerItem> = DjangoAPICall.API.get_influencer_by_pk(1)
+        var call: Call<InfluencerItem> = DjangoAPICall.API.get_influencer_by_pk("Bearer" + " " + DjangoAPICall.token, 1)
         call.enqueue(object: Callback<InfluencerItem> {
             override fun onResponse(
                 call: Call<InfluencerItem>,
@@ -80,6 +79,9 @@ class ModelDetailFragment : Fragment() {
                 if (response.isSuccessful) {
                     myInfluencer = response.body()!!
                     setDataToView()
+                }
+                else {
+                    Log.d("RESULT", response.code().toString() + "\n" + response.errorBody().toString())
                 }
             }
             override fun onFailure(call: Call<InfluencerItem>, t: Throwable) {

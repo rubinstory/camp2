@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         djangoAPICall.init()
         supportFragmentManager.beginTransaction()
-//            .replace(R.id.fragment, ModelDetailFragment())
-            .replace(R.id.fragment, MainFragment())
+            .replace(R.id.fragment, ModelDetailFragment())
+//            .replace(R.id.fragment, MainFragment())
             .commit()
     }
 
