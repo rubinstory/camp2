@@ -8,10 +8,12 @@ class UserManager(BaseUserManager):
 
         if not username:
             raise ValueError('must have user username')
+    
 
         user = self.model(
             email = self.normalize_email(email),
-            username = username
+            username = username,
+            # profile_image = profile_image,
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -21,9 +23,9 @@ class UserManager(BaseUserManager):
         user = self.create_user(
             username=username,
             email = self.normalize_email(email),
-            password=password,
+            # profile_image = profile_image,
         )
-
+        user.set_password(password)
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -32,6 +34,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     username = models.CharField(default='', max_length=100, null=False, blank =False, unique=True)
     email = models.EmailField(default='', max_length=100, null =False, blank = False, unique = True)
+    profile_image = models.ImageField(blank=True)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

@@ -3,11 +3,14 @@ from .models import *
 
 
 class UserSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(use_url = True)
+
     def create(self, validated_data):
         user = User.objects.create_user(
             email =validated_data['email'],
             username =validated_data['username'],
-            password =validated_data['password']
+            password =validated_data['password'],
+            # profile_image = validated_data['profile_image'],
         )
         return user
 
