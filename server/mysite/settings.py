@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #app
     'agency',
     'accounts',
+
     #django-rest-auth
     'rest_framework',
     'rest_framework.authtoken',
@@ -52,7 +53,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
 ]
 
 ######django-allauth#####
