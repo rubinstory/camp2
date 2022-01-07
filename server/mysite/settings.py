@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    'allauth.socialaccount.providers.kakao',
     'rest_framework_simplejwt',
 ]
 
@@ -65,14 +65,26 @@ ACCOUNT_UNIQUE_EMAIL= True
 ACCOUNT_USERNAME_REQUIRED=True
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 #########JWT################ 
 REST_USE_JWT = True
 #default: only permitted user can access
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#     ),
+#     'DEFAULT_AUTHENTICATION_CLASSES':(
+#         'rest_framework.authentication.SessionAuthentication',
+#         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+#     ),
+# }
+
+
+
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
+        'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES':(
@@ -90,34 +102,18 @@ REST_FRAMEWORK = {
 SITE_ID = 1
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3), #how long access tokens are valid
-    'REFRESH_TOKEN_LIFETIME': timedelta (days=7),  #how long refresh tokens are valid
-    'ROTATE_REFRESH_TOKENS' : False,
-    'BLACKLIST_AFTER_ROTATION' : True, 
-    'UPDATE_LAST_LOGIN': False,
-
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,
-    'AUDIENCE': None,
-    'ISSUER': None,
-    'JWK_URL': None,
-    'LEEWAY': 0,
-
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'AUTH_HEADER_TYPES': ('JWT',),
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',
-    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
-
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
-
-    'JTI_CLAIM': 'jti',
-
-    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
-    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
 AUTH_USER_MODEL = 'accounts.User'
