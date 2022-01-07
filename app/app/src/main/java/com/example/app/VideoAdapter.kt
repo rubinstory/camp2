@@ -44,7 +44,7 @@ class VideoAdapter (private val context: Context): RecyclerView.Adapter<VideoAda
             videoView.setMediaController(controller)
             videoView.setVideoPath(item.url)
 //            videoView.setVideoURI(Uri.parse(item.url))
-            videoView.start()
+//            videoView.start()
         }
 
 
