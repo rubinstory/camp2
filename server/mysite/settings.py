@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from django.urls import reverse_lazy
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -58,45 +59,29 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
 ]
 
-######django-allauth#####
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+#####django-allauth#####
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL= True
 ACCOUNT_USERNAME_REQUIRED=True
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 #########JWT################ 
 REST_USE_JWT = True
-#default: only permitted user can access
+
+
+
 # REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': (
+#         'DEFAULT_PERMISSION_CLASSES': (
 #         'rest_framework.permissions.IsAuthenticated',
 #     ),
-#     'DEFAULT_AUTHENTICATION_CLASSES':(
-#         'rest_framework.authentication.SessionAuthentication',
-#         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-#     ),
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     ],
 # }
-
-
-
-REST_FRAMEWORK = {
-        'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES':(
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-         # 'rest_framework.authentication.TokenAuthentication',
-        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-    ),
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend'
-    ],
-}
 
 
 SITE_ID = 1
@@ -119,6 +104,10 @@ SIMPLE_JWT = {
 AUTH_USER_MODEL = 'accounts.User'
 AUTH_SUPER_USER_MODEL = 'accounts.User'
 
+# ###SOCIAL LOGIN -KAKAO ###
+# BASE_URL = 'http://localhost:8000/'
+# KAKAO_REST_API_KEY = '1f37b8455c767d2c9886b1fc9663f6e7'
+# KAKAO_CALLBACK_URI = BASE_URL +'accounts/kakao/login/callback/'
 
 
 
@@ -214,5 +203,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'django.contrib.auth.backends.ModelBackend',
 # )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 

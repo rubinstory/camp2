@@ -20,27 +20,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('agency.urls')),
-    # path('user/', include('accounts.urls')),
-    # path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    # path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
-    # # path('accounts/', include('dj_rest_auth.urls')),
-    # # path('accounts/', include('dj_rest_auth.urls')),
-    path('accounts/', include('dj_rest_auth.registration.urls')),
-    # path('accounts/', include('allauth.urls')),
-    # path('accounts/', include('accounts.urls')),
-    
     path('accounts/', include('dj_rest_auth.urls')),
+    path('accounts/', include('dj_rest_auth.registration.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('accounts.urls')),
     
-    
-    
-    
-    
-#    path('rest-auth/login', LoginView.as_view(), name='rest_login'),
-    # path('rest-auth/logout', LogoutView.as_view(), name='rest_logout'),
-    # path('rest-auth/password/change', PasswordChangeView.as_view(), name='rest_password_change'),
-
-    # 회원가입
-    # path('rest-auth/registration', RegisterView.as_view(), name='rest_register'),
    ]
