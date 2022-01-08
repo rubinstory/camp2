@@ -44,18 +44,16 @@ INSTALLED_APPS = [
     #app
     'agency',
     'accounts',
+    'contract',
 
     #django-rest-auth
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_simplejwt.token_blacklist',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     #django-allauth
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.kakao',
     'rest_framework_simplejwt',
 ]
 
@@ -66,7 +64,10 @@ ACCOUNT_UNIQUE_EMAIL= True
 ACCOUNT_USERNAME_REQUIRED=True
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTH_USER_MODEL = 'accounts.User'
+AUTH_SUPER_USER_MODEL = 'accounts.User'
 
 
 #########JWT################ 
@@ -101,8 +102,7 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
 
-AUTH_USER_MODEL = 'accounts.User'
-AUTH_SUPER_USER_MODEL = 'accounts.User'
+
 
 # ###SOCIAL LOGIN -KAKAO ###
 # BASE_URL = 'http://localhost:8000/'
