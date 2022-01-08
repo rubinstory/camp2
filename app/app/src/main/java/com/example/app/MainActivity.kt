@@ -7,6 +7,8 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.app.Fragment.LoginFragment
+import com.example.app.Fragment.MainFragment
 import com.example.app.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -22,14 +24,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val keyHash = Utility.getKeyHash(this)
-//        Log.d("Hash", keyHash)
-
         initMenuButton()
         initLoginButton()
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment, ModelDetailFragment())
+            .replace(R.id.fragment, MainFragment())
             .commit()
     }
 
@@ -48,14 +47,19 @@ class MainActivity : AppCompatActivity() {
         var tintColor: Int = R.color.black
         var backgroundColor: Int = R.color.white
 
-        binding.dropdownMenuBtn.setRippleColor(ColorStateList.valueOf(ContextCompat.getColor(this, tintColor)))
+        if (color == "white") {
+            tintColor = R.color.white
+            backgroundColor = R.color.black
+        }
+
+        binding.dropdownMenuBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
         binding.dropdownMenuBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
 
-        binding.dropdownSearchBtn.setRippleColor(ColorStateList.valueOf(ContextCompat.getColor(this, tintColor)))
-        binding.dropdownSearchBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
+        binding.dropdownSearchBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
+        binding.dropdownSearchBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
 
-        binding.dropdownLoginBtn.setRippleColor(ColorStateList.valueOf(ContextCompat.getColor(this, tintColor)))
-        binding.dropdownLoginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
+        binding.dropdownLoginBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
+        binding.dropdownLoginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
     }
 
     fun initMenuButton() {

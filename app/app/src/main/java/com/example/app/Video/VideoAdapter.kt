@@ -1,14 +1,14 @@
-package com.example.app
+package com.example.app.Video
 
 import com.example.app.databinding.VideoItemViewBinding
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.*
+import com.example.app.R
 import org.json.JSONArray
 
 
@@ -20,7 +20,7 @@ class VideoAdapter (private val context: Context): RecyclerView.Adapter<VideoAda
 
     init {  }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         videoViewBinding = VideoItemViewBinding.inflate(LayoutInflater.from(context), parent, false)
         val view = LayoutInflater.from(context).inflate(R.layout.video_item_view,parent,false)
         return ViewHolder(videoViewBinding)

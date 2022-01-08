@@ -1,9 +1,10 @@
-package com.example.app
+package com.example.app.Register
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.app.RetrofitInstance
+import com.example.app.Token.Token
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -11,20 +12,19 @@ import retrofit2.Response
 
 class RegisterViewModel (private val repository: RegisterRepository): ViewModel() {
     var registerRepository: RegisterRepository = RegisterRepository()
-    var registerInfo: MutableLiveData<Register> = MutableLiveData<Register>()
 
     fun registerNewUser(newUser: Register) {
         viewModelScope.launch {
-            registerRepository.register(newUser).enqueue(object: Callback<Register>{
-                override fun onResponse(call: Call<Register>, response: Response<Register>) {
+            registerRepository.register(newUser).enqueue(object: Callback<Token>{
+                override fun onResponse(call: Call<Token>, response: Response<Token>) {
                     if (response.isSuccessful) {
-                        var token: Register = response.body()!!
-                        RetrofitInstance.setAccessToken(token.access_token!!)
-                        RetrofitInstance.setRefreshToken(token.refresh_token!!)
+                        var token: Token = response.body()!!
+                        RetrofitInstance.setAccessToken(token.access_token)
+                        RetrofitInstance.setRefreshToken(token.refresh_token)
                     }
                 }
 
-                override fun onFailure(call: Call<Register>, t: Throwable) {
+                override fun onFailure(call: Call<Token>, t: Throwable) {
 
                 }
 

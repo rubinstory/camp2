@@ -7,19 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-    <include
-        android:id="@+id/top_bar_with_back_btn"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/top_bar_with_back_btn"/>
+
 
     <LinearLayout
         android:id="@+id/company_logo_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar_with_back_btn"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="1.0"
         app:layout_constraintHeight_percent="0.3"
         android:layout_gravity="center_vertical"

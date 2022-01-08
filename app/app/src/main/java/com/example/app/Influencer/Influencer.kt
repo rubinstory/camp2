@@ -1,4 +1,4 @@
-package com.example.app
+package com.example.app.Influencer
 
 import com.google.gson.annotations.SerializedName
 import org.jetbrains.annotations.NotNull

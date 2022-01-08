@@ -1,17 +1,21 @@
-package com.example.app
+package com.example.app.Fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.app.Influencer.Influencer
+import com.example.app.Influencer.InfluencerRepository
+import com.example.app.Influencer.InfluencerViewModel
+import com.example.app.Influencer.InfluencerViewModelFactory
+import com.example.app.R
+import com.example.app.Video.VideoAdapter
+import com.example.app.Video.VideoItem
 import com.example.app.databinding.ModelDetailFragmentBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ModelDetailFragment : Fragment() {
     private lateinit var viewModel: InfluencerViewModel
@@ -28,6 +32,9 @@ class ModelDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ModelDetailFragmentBinding.inflate(inflater, container, false)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),
+            R.color.white
+        )
         initViewModel()
         setFollowButton()
         setVideoAdapter()
@@ -82,7 +89,6 @@ class ModelDetailFragment : Fragment() {
         viewModel.getInfluencerById(1)
         viewModel.influencerList.observe(viewLifecycleOwner, Observer { influencerList ->
             var influencer = influencerList[0]
-
             binding.modelProfileView.modelDetailName.text = influencer.getFullName()
             binding.modelProfileView.modelDetailCountry.text = influencer.country
             binding.modelProfileView.modelProfileAge.text = influencer.age.toString()
