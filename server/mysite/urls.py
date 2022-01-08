@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from mysite import views
+from django.conf import settings
+from django.conf.urls.static import static
 # from pybo import views
 
 urlpatterns = [
@@ -27,5 +29,7 @@ urlpatterns = [
     path('users/allauth', include('allauth.urls')),
     path('contract/', include('contract.urls')),
     path('api/logout/', views.BlackListRefreshView.as_view(), name="logout"),
-    
-   ]
+    # path('blockchain/', blockchain.views.BlockChain.as_view(), name="blockchain"),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
