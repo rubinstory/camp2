@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.MediaController
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.app.R
 import com.example.app.Video.VideoItem
 import com.example.app.databinding.MainFragmentBinding
@@ -25,22 +26,25 @@ class MainFragment : Fragment() {
     ): View? {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
 
-        binding.descriptionTextView.visibility = TextView.INVISIBLE
+//        binding.descriptionTextView.visibility = TextView.INVISIBLE
 //        binding.modelProfileItem.modelProfileItem.visibility = ConstraintLayout.INVISIBLE
-        var animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-        animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) {}
-            override fun onAnimationEnd(p0: Animation?) {
-                binding.descriptionTextView.startAnimation(AnimationUtils.loadAnimation(context,
-                    R.anim.fade_in
-                ))
-                binding.descriptionTextView.visibility = TextView.VISIBLE
-//                binding.modelProfileItem.modelProfileItem.visibility = ConstraintLayout.VISIBLE
-//                binding.modelProfileItem.modelProfileItem.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
-            }
-            override fun onAnimationRepeat(p0: Animation?) {}
-        })
-        binding.titleTextView.startAnimation(animation)
+        var animation1 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+
+        var animation2 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        animation2.duration = 1000
+        var animation3 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        animation3.duration = 2000
+
+        binding.titleTextView.startAnimation(animation1)
+        binding.descriptionTextView.startAnimation(animation2)
+        binding.modelProfileItem.modelProfileItem.startAnimation(animation3)
+
+        binding.modelProfileItem.modelProfileItem.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .replace(R.id.fragment, ModelDetailFragment())
+                .commit()
+        }
 
         return binding.root
     }

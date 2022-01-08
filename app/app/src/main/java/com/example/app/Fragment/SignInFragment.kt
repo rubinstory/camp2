@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.app.Authentication.Authentication
@@ -40,12 +42,21 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onResume() {
-        super.onResume()
+    fun activateFadeInAnimationForEachLinearLayouts() {
 
+        var animation1 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        animation1.duration = 1000
+        var animation2 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        animation2.duration = 1500
+        var animation3 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        animation3.duration = 2000
+        binding.companyLogoView.startAnimation(animation1)
+        binding.signInView.startAnimation(animation2)
+        binding.buttonView.startAnimation(animation3)
     }
 
     fun setLoginAndSignupBtn() {
+        activateFadeInAnimationForEachLinearLayouts()
         setLogInBtn()
         setSignUpBtn()
         binding.signUpWithKakaoBtn.setOnClickListener { setKakao() }
@@ -73,7 +84,7 @@ class SignInFragment : Fragment() {
     fun setSignUpBtn() {
         binding.signUpBtn.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.fade_in, R.anim.fade_in)
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 .replace(R.id.fragment, SignUpFragment())
                 .commitAllowingStateLoss()
         }

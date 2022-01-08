@@ -15,15 +15,16 @@ interface DjangoAPI {
     @POST("/users/login/")
     fun login(@Body authentication: Authentication): Call<Token>
 
-    @POST("/users/logout/")
-    fun logout(): Call<Token>
+    @FormUrlEncoded
+    @POST("/api/logout/")
+    fun logout(@Field("refresh") token: String): Call<Token>
 
     @POST("/users/")
     fun register_new_user(@Body newUser: Register): Call<Token>
 
     @FormUrlEncoded
     @POST("/users/token/verify/")
-    fun verify_access_token(@Field("token") token: String): Call<Token>
+    fun verify_access_token(@Field("token") token: String ): Call<Token>
 
     // INFLUENCER REQUEST QUERIES
     @POST("/agency/Influencers/")

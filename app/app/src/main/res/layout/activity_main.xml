@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/dropdown_menu_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,12 +15,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         app:fabSize="mini"
-        android:src="@drawable/square"
+        android:src="@drawable/dots"
         app:backgroundTint="@color/black"
-        app:color="@color/white"/>
+        app:tint="@color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/dropdown_login_btn"
+        android:id="@+id/dropdown_home_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_btn"
@@ -28,8 +28,22 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         app:fabSize="mini"
+        android:src="@drawable/home"
+        android:visibility="invisible"
+        app:backgroundTint="@color/white"
+        app:tint="@color/black"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/dropdown_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown_home_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        app:fabSize="mini"
         android:elevation="10dp"
-        android:src="@drawable/lock"
+        android:src="@drawable/enter"
         android:visibility="invisible"
         app:backgroundTint="@color/white"
         app:tint="@color/black"/>

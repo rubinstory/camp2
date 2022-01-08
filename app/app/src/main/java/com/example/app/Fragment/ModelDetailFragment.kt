@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.app.Influencer.Influencer
 import com.example.app.Influencer.InfluencerRepository
 import com.example.app.Influencer.InfluencerViewModel
@@ -94,6 +95,8 @@ class ModelDetailFragment : Fragment() {
             binding.modelProfileView.modelProfileAge.text = influencer.age.toString()
             binding.modelProfileView.modelProfileHeight.text = influencer.height.toString()
             binding.modelProfileView.modelProfileWeight.text = influencer.weight.toString()
+//            binding.modelProfileView.profileCircleView.modelProfileImg.setImage
+            Glide.with(this).load(influencer.imageList[0].url).into(binding.modelProfileView.profileCircleView.modelProfileImg)
         })
 
     }
