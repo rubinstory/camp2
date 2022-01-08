@@ -1,4 +1,4 @@
-package com.example.app
+package com.example.app.Influencer
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -14,9 +14,9 @@ class InfluencerViewModel(private val repository: InfluencerRepository): ViewMod
     var influencerList: MutableLiveData<List<Influencer>> = MutableLiveData<List<Influencer>>()
 
 
-    fun getInfluencerById(id: Int) {
+    fun getInfluencerById(id: Int) { // async
         viewModelScope.launch {
-            influencerRepository.getInfluencerById(id).enqueue(object: Callback<Influencer> {
+            influencerRepository.getInfluencerById(id).enqueue(object: Callback<Influencer> { // async
                 override fun onResponse(call: Call<Influencer>, response: Response<Influencer>) {
                     if (response.isSuccessful) {
                         var singleObject = mutableListOf<Influencer>()

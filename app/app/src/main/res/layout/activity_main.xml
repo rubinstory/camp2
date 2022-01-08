@@ -32,8 +32,8 @@
         android:elevation="10dp"
         android:src="@drawable/lock"
         android:visibility="invisible"
-        app:backgroundTint="@color/black"
-        app:tint="@color/white"/>
+        app:backgroundTint="@color/white"
+        app:tint="@color/black"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/dropdown_search_btn"
@@ -44,11 +44,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         app:fabSize="mini"
-        android:elevation="10dp"
         android:src="@drawable/search"
         android:visibility="invisible"
-        app:backgroundTint="@color/black"
-        app:tint="@color/white"/>
+        app:backgroundTint="@color/white"
+        app:tint="@color/black"/>
 
     <FrameLayout
         android:id="@+id/fragment"

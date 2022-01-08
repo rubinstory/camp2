@@ -1,4 +1,4 @@
-package com.example.app
+package com.example.app.Fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.app.Register.Register
+import com.example.app.Register.RegisterRepository
+import com.example.app.Register.RegisterViewModel
+import com.example.app.Register.RegisterViewModelFactory
+import com.example.app.RetrofitInstance
 import com.example.app.databinding.SignupFragmentBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class SignUpFragment : Fragment() {
     private lateinit var viewModel: RegisterViewModel
@@ -63,11 +65,6 @@ class SignUpFragment : Fragment() {
         newUser.password1 = binding.pwInputField.text.toString()
         newUser.password2 = binding.pwCheckInputField.text.toString()
         viewModel.registerNewUser(newUser)
-        viewModel.registerInfo.observe(viewLifecycleOwner, Observer { token ->
-            RetrofitInstance.setAccessToken(token.access_token!!)
-            RetrofitInstance.setRefreshToken(token.refresh_token!!)
-            Log.d("TOKEN", token.access_token!!)
-        })
     }
 
     override fun onDestroyView() {

@@ -1,11 +1,13 @@
-package com.example.app
+package com.example.app.Register
+
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class InfluencerViewModelFactory(private val repository: InfluencerRepository):
+
+class RegisterViewModelFactory(private val repository: RegisterRepository):
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return InfluencerViewModel(repository) as T
+        return RegisterViewModel(repository) as T
     }
 }

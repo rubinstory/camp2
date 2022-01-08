@@ -1,24 +1,17 @@
-package com.example.app
+package com.example.app.Fragment
 
-import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.FrameLayout
 import android.widget.MediaController
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.app.R
+import com.example.app.Video.VideoItem
 import com.example.app.databinding.MainFragmentBinding
-import com.example.app.databinding.ModelDetailFragmentBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
@@ -38,7 +31,9 @@ class MainFragment : Fragment() {
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {}
             override fun onAnimationEnd(p0: Animation?) {
-                binding.descriptionTextView.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
+                binding.descriptionTextView.startAnimation(AnimationUtils.loadAnimation(context,
+                    R.anim.fade_in
+                ))
                 binding.descriptionTextView.visibility = TextView.VISIBLE
 //                binding.modelProfileItem.modelProfileItem.visibility = ConstraintLayout.VISIBLE
 //                binding.modelProfileItem.modelProfileItem.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))

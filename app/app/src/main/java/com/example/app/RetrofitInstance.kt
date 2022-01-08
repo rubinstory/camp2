@@ -6,11 +6,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitInstance {
 
     private val BASE_URL:String = "http://192.249.18.201:80"
-    private var ACCESS_TOKEN: String = ""
-    private var REFRESH_TOKEN: String = ""
+    var ACCESS_TOKEN: String = ""
+    var REFRESH_TOKEN: String = ""
 
-    fun setAccessToken(token: String) { ACCESS_TOKEN = token }
-    fun setRefreshToken(token: String) { REFRESH_TOKEN = token }
+//    fun setAccessToken(token: String) { ACCESS_TOKEN = token }
+//    fun setRefreshToken(token: String) { REFRESH_TOKEN = token }
 
     private val retrofit by lazy {
         Retrofit.Builder()
