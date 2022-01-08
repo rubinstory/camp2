@@ -29,7 +29,7 @@ urlpatterns = [
     path('users/allauth', include('allauth.urls')),
     path('contract/', include('contract.urls')),
     path('api/logout/', views.BlackListRefreshView.as_view(), name="logout"),
-    # path('blockchain/', blockchain.views.BlockChain.as_view(), name="blockchain"),
+    path('blockchain/', include('blockchainapp.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
