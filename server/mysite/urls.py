@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from mysite import views
 # from pybo import views
 
 urlpatterns = [
@@ -23,6 +24,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('users/', include('dj_rest_auth.urls')), ## registration / login / logout
     path('users/', include('dj_rest_auth.registration.urls')),
+    path('users/allauth', include('allauth.urls')),
     path('contract/', include('contract.urls')),
+    path('api/logout/', views.BlackListRefreshView.as_view(), name="logout"),
     
    ]
