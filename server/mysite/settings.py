@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
+
+
     #app
     'agency',
     'accounts',
@@ -48,7 +51,6 @@ INSTALLED_APPS = [
 
     #django-rest-auth
     'rest_framework',
-    'rest_framework.authtoken',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     #django-allauth
@@ -58,11 +60,11 @@ INSTALLED_APPS = [
 ]
 
 #####django-allauth#####
-ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL= True
-ACCOUNT_USERNAME_REQUIRED=True
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_UNIQUE_EMAIL= True
+# ACCOUNT_USERNAME_REQUIRED=True
+# ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -72,7 +74,7 @@ AUTH_SUPER_USER_MODEL = 'accounts.User'
 
 #########JWT################ 
 REST_USE_JWT = True
-
+REST_AUTH_TOKEN_MODEL = None
 
 
 # REST_FRAMEWORK = {

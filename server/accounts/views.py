@@ -3,8 +3,6 @@ from django.shortcuts import render
 from rest_framework import viewsets, permissions, status
 from .serializers import UserSerializer
 from .models import User
-from dj_rest_auth.registration.views import SocialLoginView
-from allauth.socialaccount.providers.kakao.views import KakaoOAuth2Adapter
 from rest_framework_simplejwt import authentication
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -16,7 +14,7 @@ class UserCreate(viewsets.ModelViewSet):
     authentication_classes = [authentication.JWTAuthentication]
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    
+
 
 @api_view(["GET"])
 def get_user_by_id(request, pk):
