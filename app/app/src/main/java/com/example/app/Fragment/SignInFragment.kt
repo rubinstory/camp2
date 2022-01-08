@@ -7,25 +7,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.app.Authentication.Authentication
+import com.example.app.Authentication.AuthenticationRepository
+import com.example.app.Authentication.AuthenticationViewModel
+import com.example.app.Authentication.AuthenticationViewModelFactory
+import com.example.app.Influencer.InfluencerRepository
+import com.example.app.Influencer.InfluencerViewModel
+import com.example.app.Influencer.InfluencerViewModelFactory
+import com.example.app.MainActivity
 import com.example.app.R
-import com.example.app.databinding.LoginFragmentBinding
+import com.example.app.databinding.SigninFragmentBinding
 import com.kakao.sdk.user.UserApiClient
 
-class LoginFragment : Fragment() {
-    private var _binding: LoginFragmentBinding? = null
+class SignInFragment : Fragment() {
+    private lateinit var viewModel: AuthenticationViewModel
+
+    private var _binding: SigninFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = LoginFragmentBinding.inflate(inflater, container, false)
+        _binding = SigninFragmentBinding.inflate(inflater, container, false)
         setLoginAndSignupBtn()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     fun setLoginAndSignupBtn() {
@@ -36,7 +53,20 @@ class LoginFragment : Fragment() {
 
     fun setLogInBtn() {
         binding.loginBtn.setOnClickListener {
-
+            val repository = AuthenticationRepository()
+            val authenticationViewModelFactory = AuthenticationViewModelFactory(repository)
+            viewModel = ViewModelProvider(this, authenticationViewModelFactory).get(AuthenticationViewModel::class.java)
+            viewModel.loginWithAccount(Authentication(binding.idInputField.text.toString(), binding.pwInputField.text.toString()))
+            viewModel.HTTP_STATUS.observe(viewLifecycleOwner, Observer { status ->
+                when(status) {
+                    200 -> {
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                            .replace(R.id.fragment, MainFragment())
+                            .commitAllowingStateLoss()
+                    }
+                }
+            })
         }
     }
 

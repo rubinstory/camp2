@@ -69,7 +69,7 @@ class ModelDetailFragment : Fragment() {
     fun setFollowButton() {
         binding.twoBtnBar.modelContractBtn.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment, LoginFragment())
+                .replace(R.id.fragment, SignInFragment())
                 .commit()
         }
     }
@@ -97,24 +97,4 @@ class ModelDetailFragment : Fragment() {
         })
 
     }
-//    fun loadInfluencer() {
-//        var call: Call<Influencer> = RetrofitInstance.API.get_influencer_by_pk("Bearer" + " " + RetrofitInstance.token, 1)
-//        call.enqueue(object: Callback<Influencer> {
-//            override fun onResponse(
-//                call: Call<Influencer>,
-//                response: Response<Influencer>
-//            ) {
-//                if (response.isSuccessful) {
-//                    influencer = response.body()!!
-//                    setDataToView()
-//                }
-//                else {
-//                    Log.d("RESULT", response.code().toString() + "\n" + response.errorBody().toString())
-//                }
-//            }
-//            override fun onFailure(call: Call<Influencer>, t: Throwable) {
-//                t.message?.let { Log.e("API", it) }
-//            }
-//        })
-//    }
 }
