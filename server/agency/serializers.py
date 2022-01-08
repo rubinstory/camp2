@@ -6,8 +6,3 @@ class InfluencerSerializer(serializers.ModelSerializer):
         model = Influencer
         fields = ('id', 'first_name', 'last_name', 'age', 'height', 'weight', 'country', 'description')
 
-# class ProducerSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Producer
-#         fields = ('id', 'first_name', 'last_name', 'age')
-

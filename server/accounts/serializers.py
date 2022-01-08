@@ -3,7 +3,7 @@ from .models import *
 
 
 class UserSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(use_url = True)
+    # image = serializers.ImageField(use_url = True)
 
     def create(self, validated_data):
         user = User.objects.create_user(
