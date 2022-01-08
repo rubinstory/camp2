@@ -1,5 +1,6 @@
 package com.example.app
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
@@ -7,40 +8,83 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.app.Fragment.LoginFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.app.Authentication.AuthenticationRepository
+import com.example.app.Authentication.AuthenticationViewModel
+import com.example.app.Authentication.AuthenticationViewModelFactory
+import com.example.app.Fragment.SignInFragment
 import com.example.app.Fragment.MainFragment
+import com.example.app.Fragment.SignOutFragment
 import com.example.app.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: AuthenticationViewModel
+
+    private val ACCESS_GRANTED = 200
+    private val UNAUTHORIZED = 401
+    private val FORBIDDEN = 403
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initMenuButton()
-        initLoginButton()
+        checkTokenAuth()
+
+        supportFragmentManager.registerFragmentLifecycleCallbacks(object: FragmentManager.FragmentLifecycleCallbacks() {
+            override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
+                super.onFragmentAttached(fm, f, context)
+                checkTokenAuth()
+            }
+        }, true)
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment, MainFragment())
             .commit()
     }
 
-    fun initLoginButton() {
-        binding.dropdownLoginBtn.setOnClickListener {
-            closeDropDownMenu()
-            changeDropDownButtonColor("black")
-            supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                .replace(R.id.fragment, LoginFragment())
-                .commit()
-        }
+
+    fun checkTokenAuth(): Boolean {
+        val repository = AuthenticationRepository()
+        val authenticationViewModelFactory = AuthenticationViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, authenticationViewModelFactory).get(
+            AuthenticationViewModel::class.java)
+        viewModel.authenticateToken()
+
+        var t = false
+        viewModel.HTTP_STATUS.observe(this, Observer { status->
+            when(status) {
+                ACCESS_GRANTED -> {
+                    binding.dropdownLoginBtn.setOnClickListener {
+                        closeDropDownMenu()
+                        changeDropDownButtonColor("black")
+                        supportFragmentManager.beginTransaction()
+                            .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                            .replace(R.id.fragment, SignOutFragment())
+                            .commit()
+                    }
+                }
+                else -> {
+                    binding.dropdownLoginBtn.setOnClickListener {
+                        closeDropDownMenu()
+                        changeDropDownButtonColor("black")
+                        supportFragmentManager.beginTransaction()
+                            .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                            .replace(R.id.fragment, SignInFragment())
+                            .commit()
+                    }
+                }
+            }
+        })
+        return t
     }
 
     fun changeDropDownButtonColor(color: String) {

@@ -19,8 +19,8 @@ class RegisterViewModel (private val repository: RegisterRepository): ViewModel(
                 override fun onResponse(call: Call<Token>, response: Response<Token>) {
                     if (response.isSuccessful) {
                         var token: Token = response.body()!!
-                        RetrofitInstance.setAccessToken(token.access_token)
-                        RetrofitInstance.setRefreshToken(token.refresh_token)
+                        RetrofitInstance.ACCESS_TOKEN = token.access_token
+                        RetrofitInstance.REFRESH_TOKEN = token.refresh_token
                     }
                 }
 

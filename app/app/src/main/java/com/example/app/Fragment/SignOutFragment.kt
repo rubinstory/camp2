@@ -6,19 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.app.Authentication.Authentication
+import com.example.app.Authentication.AuthenticationRepository
+import com.example.app.Authentication.AuthenticationViewModel
+import com.example.app.Authentication.AuthenticationViewModelFactory
 import com.example.app.R
-import com.example.app.Register.Register
-import com.example.app.Register.RegisterRepository
-import com.example.app.Register.RegisterViewModel
-import com.example.app.Register.RegisterViewModelFactory
 import com.example.app.databinding.SignOutFragmentBinding
-import com.example.app.databinding.SignupFragmentBinding
 
 class SignOutFragment: Fragment() {
-//    private lateinit var viewModel: RegisterViewModel
+    private lateinit var viewModel: AuthenticationViewModel
 
-//    private var name: String = ""
-//    private var email: String = ""
     private var _binding: SignOutFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -33,13 +30,25 @@ class SignOutFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setSignOutBtn()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setSignOutBtn()
     }
 
     fun setSignOutBtn() {
         binding.signOutBtn.setOnClickListener {
+            var repository = AuthenticationRepository()
+            val authenticationViewModelFactory = AuthenticationViewModelFactory(repository)
+            viewModel = ViewModelProvider(this, authenticationViewModelFactory).get(AuthenticationViewModel::class.java)
+            viewModel.logout()
+
             requireActivity().supportFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                .replace(R.id.fragment, LoginFragment())
+                .replace(R.id.fragment, SignInFragment())
+                .commit()
         }
     }
 
