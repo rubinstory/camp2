@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from blockchain.BlockChain import BlockChain
+from .blockchain import *
+from rest_framework.decorators import api_view
+from rest_framework import status
+
 
 # Create your views here.
-class BlockChain(APIView):
+# class BlockChainView(APIView):
 
-    blockchain = Blockchain()
+blockchain = Blockchain()
 
-    def mine_block():
+@api_view(["GET"])
+def mine_block(request):
     previous_block = blockchain.get_previous_block()
     previous_proof = previous_block['proof']
     proof = blockchain.proof_of_work(previous_proof)
@@ -18,11 +22,12 @@ class BlockChain(APIView):
         'message' : 'Congratulations, you just mined a block!',
         **block
     }
-    return Response(response)
+    return Response(responses)
 
-    def get_chain():
-        response = {
-            'chain': blockchain.chain,
-            'length' : len(blockchain.chain)
-        }
-        return Response(data = {'chain': blockchain.chain,'length' : len(blockchain.chain)}, status = status.HTTP_200_OK)
+@api_view(["GET"])
+def get_chain(request):
+    response = {
+        'chain': blockchain.chain,
+        'length' : len(blockchain.chain)
+    }
+    return Response(data = {'chain': blockchain.chain,'length' : len(blockchain.chain)}, status = status.HTTP_200_OK)

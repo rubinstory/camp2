@@ -3,7 +3,6 @@ import hashlib
 import json
 
 class Blockchain:
-    
     def __init__(self):
         self.chain = []
         self.create_block(proof = 1, previous_hash = '0') #genesis block
@@ -13,12 +12,12 @@ class Blockchain:
             'index': len(self.chain)+1,
             'timestamp': str(datetime.datetime.now()),
             'proof': proof,
-            'previous_hash': previous_hash
+            'current_hash': previous_hash,
         }
         self.chain.append(block)
         return block
-
-    def get_previous_block(self): #return last block
+    
+    def get_previous_block(self):
         return self.chain[-1]
 
     def proof_of_work(self, previous_proof):#get previous proof, and return new proof that satisfy specific condition
@@ -26,9 +25,7 @@ class Blockchain:
         check_proof = False
 
         while check_proof is False:
-            hash_operation = hashlib.sha256(
-                str(new_proof**2-previous_proof**2).encode())
-                .hexdigest()
+            hash_operation = hashlib.sha256(str(new_proof**2-previous_proof**2).encode()).hexdigest()
             
             if hash_operation.startswith('0000'):
                 check_proof = True
@@ -37,7 +34,7 @@ class Blockchain:
         return new_proof
 
     def hash(self, block):
-        encoded_block = json.dumps(bloc, sort_keys = True).encode()
+        encoded_block = json.dumps(block, sort_keys = True).encode()
         return hashlib.sha256(encoded_block).hexdigest()
 
     def is_valid_chain(self, chain):
@@ -46,7 +43,7 @@ class Blockchain:
 
         while block_index < len(chain):
             block = chain[block_index]
-            if block['previous_hash'] ! = self.hash(previous_block):
+            if block['current_hash'] != self.hash(previous_block):
                 return False
 
             previous_proof = previous_block['proof']
