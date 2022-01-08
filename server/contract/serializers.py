@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from .models import Contract
-from agency.serializers import InfluencerSerializer
-from accounts.serializers import UserSerializer
+from agency.serializers import *
+from accounts.serializers import *
 
 class ContractSerializer(serializers.ModelSerializer):
-    influencer = InfluencerSerializer()
-    user = UserSerializer()
+    # influencer = InfluencerSerializer()
+    # user = UserSerializer()
 
     class Meta:
         model = Contract
-        fields = ('signature', 'influencer', 'user')
+        fields = '__all__'
 

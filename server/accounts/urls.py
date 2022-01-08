@@ -3,7 +3,7 @@ from django.urls import path
 from django.contrib import admin
 from rest_framework import routers
 from accounts.views import UserCreate
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, 
 
 from accounts import views
 

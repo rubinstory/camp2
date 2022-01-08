@@ -1,11 +1,31 @@
 from rest_framework import serializers
-from .models import Influencer
-from accounts.serializers import UserSerializer
+from .models import *
+from accounts.serializers import *
+from contract.serializers import *
+
+    
+
+
+class ImagePortfolioSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Image_Portfolio
+        fields = '__all__'
+
+
+class VideoPortfolioSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Video_Portfolio
+        fields = '__all__'
+
+
 
 class InfluencerSerializer(serializers.ModelSerializer):
-    producer = UserSerializer()
+    image = ImagePortfolioSerializer(many = True)
+    video = VideoPortfolioSerializer(many = True)
+    contract = ContractSerializer(many = True)
 
     class Meta:
         model = Influencer
-        fields = '__all__'
-
+        fields = ('first_name', 'last_name', 'age', 'height', 'weight', 'country', 'description', 'producer', 'image', 'video', 'contract',)

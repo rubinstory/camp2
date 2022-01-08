@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Influencer
+from .models import *
 
 # Register your models here.
 admin.site.register(Influencer)
-# admin.site.register(Producer)
+admin.site.register(Image_Portfolio)
+admin.site.register(Video_Portfolio)

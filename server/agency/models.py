@@ -13,3 +13,12 @@ class Influencer(models.Model):
 
     def __str__(self):
         return self.last_name + self.first_name + "/" + str(self.id)
+
+class Image_Portfolio(models.Model):
+    influencer = models.ForeignKey(Influencer, related_name = 'image', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="")
+
+class Video_Portfolio(models.Model):
+    influencer = models.ForeignKey(Influencer,  related_name = 'video', on_delete=models.CASCADE)
+    video = models.FileField(upload_to="")
+
