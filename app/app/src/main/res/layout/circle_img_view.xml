@@ -12,6 +12,7 @@
         app:cardCornerRadius="100dp"
         android:elevation="20dp">
         <ImageView
+            android:id="@+id/model_profile_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"

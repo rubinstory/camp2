@@ -11,6 +11,8 @@
     <color name="model_detail_profile_value_color">#FF000000</color>
     <color name="model_detail_profile_description_color">#FF555555</color>
     <color name="black">#FF000000</color>
+    <color name="translucent_black">#44000000</color>
+    <color name="translucent_black_dark">#88000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#555555</color>
 <!--    <color name="orange">#FF6E00</color>-->

@@ -125,7 +125,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/sign_in_view2"
+        android:id="@+id/button_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center_vertical"

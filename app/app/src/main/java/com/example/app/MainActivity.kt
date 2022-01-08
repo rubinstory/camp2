@@ -43,6 +43,15 @@ class MainActivity : AppCompatActivity() {
             override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
                 super.onFragmentAttached(fm, f, context)
                 checkTokenAuth()
+
+                when(f) {
+                    is MainFragment -> {
+                        changeDropDownButtonColor("white")
+                    }
+                    else -> {
+                        changeDropDownButtonColor("black")
+                    }
+                }
             }
         }, true)
 
@@ -51,6 +60,15 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    fun inintHomeBtn() {
+        binding.dropdownHomeButton.setOnClickListener {
+            closeDropDownMenu()
+            supportFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .replace(R.id.fragment, MainFragment())
+                .commit()
+        }
+    }
 
     fun checkTokenAuth(): Boolean {
         val repository = AuthenticationRepository()
@@ -99,6 +117,9 @@ class MainActivity : AppCompatActivity() {
         binding.dropdownMenuBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
         binding.dropdownMenuBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
 
+        binding.dropdownHomeButton.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
+        binding.dropdownHomeButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
+
         binding.dropdownSearchBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
         binding.dropdownSearchBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
 
@@ -113,11 +134,16 @@ class MainActivity : AppCompatActivity() {
                 FloatingActionButton.VISIBLE -> closeDropDownMenu()
             }
         }
+        inintHomeBtn()
     }
 
     fun openDropDownMenu() {
         binding.dropdownMenuBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_open_with_rotate))
+
+        binding.dropdownHomeButton
+            .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_from_top))
+        binding.dropdownHomeButton.visibility = FloatingActionButton.VISIBLE;
 
         binding.dropdownLoginBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_from_top))
@@ -132,6 +158,10 @@ class MainActivity : AppCompatActivity() {
     fun closeDropDownMenu() {
         binding.dropdownMenuBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_close_with_rotate))
+
+        binding.dropdownHomeButton
+            .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_to_top))
+        binding.dropdownHomeButton.visibility = FloatingActionButton.INVISIBLE;
 
         binding.dropdownLoginBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_to_top))
