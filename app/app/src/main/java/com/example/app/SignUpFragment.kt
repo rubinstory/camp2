@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.app.databinding.LoginFragmentBinding
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.app.databinding.SignupFragmentBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SignUpFragment : Fragment() {
+    private lateinit var viewModel: RegisterViewModel
+
     private var name: String = ""
     private var email: String = ""
     private var _binding: SignupFragmentBinding? = null
@@ -51,23 +54,19 @@ class SignUpFragment : Fragment() {
     }
 
     fun signUp() {
-        var registerItem = RegisterItem()
-        registerItem.username = binding.idInputField.text.toString()
-        registerItem.email = binding.emailInputField.text.toString()
-//        var name = binding.nameInputField.text
-        registerItem.password1 = binding.pwInputField.text.toString()
-        registerItem.password2 = binding.pwCheckInputField.text.toString()
-
-        var call: Call<RegisterItem> = DjangoAPICall.API.register_new_user(registerItem)
-        call.enqueue(object: Callback<RegisterItem> {
-            override fun onResponse(call: Call<RegisterItem>, response: Response<RegisterItem>) {
-                Log.d("RESULT", response.message() + "\n" + response.errorBody().toString() + "\n" + response.body().toString())
-            }
-
-            override fun onFailure(call: Call<RegisterItem>, t: Throwable) {
-                Log.e("SIGNUP", t.message.toString())
-            }
-
+        var newUser = Register()
+        val repository = RegisterRepository()
+        val registerViewModelFactory = RegisterViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, registerViewModelFactory).get(RegisterViewModel::class.java)
+        newUser.username = binding.idInputField.text.toString()
+        newUser.email = binding.emailInputField.text.toString()
+        newUser.password1 = binding.pwInputField.text.toString()
+        newUser.password2 = binding.pwCheckInputField.text.toString()
+        viewModel.registerNewUser(newUser)
+        viewModel.registerInfo.observe(viewLifecycleOwner, Observer { token ->
+            RetrofitInstance.setAccessToken(token.access_token!!)
+            RetrofitInstance.setRefreshToken(token.refresh_token!!)
+            Log.d("TOKEN", token.access_token!!)
         })
     }
 
