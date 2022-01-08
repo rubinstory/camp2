@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
             email =validated_data['email'],
             username =validated_data['username'],
             password =validated_data['password'],
-            # profile_image = validated_data['profile_image'],
+            # image = validated_data['image']
         )
         return user
 
