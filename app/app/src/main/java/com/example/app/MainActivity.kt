@@ -1,24 +1,17 @@
 package com.example.app
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.WindowInsets
-import android.view.WindowManager
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.app.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.kakao.sdk.common.util.Utility
 
 
 class MainActivity : AppCompatActivity() {
-    var djangoAPICall: DjangoAPICall = DjangoAPICall()
     private lateinit var binding: ActivityMainBinding
 
     @RequiresApi(Build.VERSION_CODES.R)
@@ -32,12 +25,11 @@ class MainActivity : AppCompatActivity() {
 //        val keyHash = Utility.getKeyHash(this)
 //        Log.d("Hash", keyHash)
 
-        djangoAPICall.init()
         initMenuButton()
         initLoginButton()
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment, MainFragment())
+            .replace(R.id.fragment, ModelDetailFragment())
             .commit()
     }
 

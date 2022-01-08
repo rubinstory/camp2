@@ -6,14 +6,14 @@ import retrofit2.http.*
 
 interface DjangoAPI {
     @POST("/Influencers/")
-    fun post_influencer(@Body influencer: InfluencerItem): Call<InfluencerItem>
+    fun post_influencer(@Body influencer: Influencer): Call<Influencer>
 
     @GET("/Influencers/")
-    fun get_influencers(): Call<List<InfluencerItem>>
+    fun get_influencers(): Call<List<Influencer>>
 
-    @GET("/agency/Influencers/{id}")
-    fun get_influencer_by_pk(@Header("Authorization") token: String, @Path("id") id:Int): Call<InfluencerItem>
+    @GET("/Influencers/{id}")
+    fun get_influencer_by_pk(@Path("id") id:Int): Call<Influencer>
 
-    @POST("accounts/")
-    fun register_new_user(@Body newUser: RegisterItem): Call<RegisterItem>
+    @POST("/accounts/")
+    fun register_new_user(@Body newUser: Register): Call<Register>
 }
