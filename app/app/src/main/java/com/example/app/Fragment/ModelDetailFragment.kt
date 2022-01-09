@@ -1,5 +1,6 @@
 package com.example.app.Fragment
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TableLayout
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -20,7 +23,10 @@ import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
 import com.example.app.R
 import com.example.app.databinding.ModelDetailFragmentBinding
+import com.github.gcacace.signaturepad.views.SignaturePad
+import com.github.gcacace.signaturepad.views.SignaturePad.OnSignedListener
 import com.google.android.material.tabs.TabLayout
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 
 class ModelDetailFragment : Fragment() {
     private lateinit var imageAdapter: ImageAdapter
@@ -43,7 +49,7 @@ class ModelDetailFragment : Fragment() {
         videoAdapter = VideoAdapter(this.requireContext())
 
         initViewModel()
-        setFollowButton()
+        setContractButton()
         setTabLayout()
         activateFadeInAnimationForEachLinearLayouts()
         return binding.root
@@ -94,12 +100,59 @@ class ModelDetailFragment : Fragment() {
         binding.modelDetailViewpager.startAnimation(animation3)
     }
 
-    fun setFollowButton() {
-        binding.twoBtnBar.modelContractBtn.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment, SignInFragment())
-                .commit()
-        }
+    fun setContractButton() {
+        binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
+            binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
+
+            setSignaturePad()
+            contractDecline()
+            contractAccept()
+
+        })
+    }
+
+    fun setSignaturePad(){
+        binding.signaturepanel.signaturePad.setOnSignedListener(object: SignaturePad.OnSignedListener {
+            override fun onStartSigning() {
+                binding.signaturepanel.signatureText.visibility = View.INVISIBLE
+            }
+
+            override fun onSigned() {
+                binding.signaturepanel.signatureText.visibility = View.INVISIBLE
+            }
+
+            override fun onClear() {
+                binding.signaturepanel.signatureText.visibility = View.VISIBLE
+
+            }
+        })
+
+        //touch outside of pannel
+        binding.constraintlayout.setOnClickListener(View.OnClickListener {
+            binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED)
+            binding.signaturepanel.signaturePad.clear()
+            binding.signaturepanel.signatureText.visibility = View.VISIBLE
+
+        })
+    }
+
+    fun contractDecline(){
+        binding.signaturepanel.contractTwoButtonBar.declineBtn.setOnClickListener(View.OnClickListener {
+            binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED)
+            binding.signaturepanel.signaturePad.clear()
+            binding.signaturepanel.signatureText.visibility = View.VISIBLE
+        })
+    }
+
+    fun contractAccept(){
+        binding.signaturepanel.contractTwoButtonBar.accpetBtn.setOnClickListener(View.OnClickListener {
+            val signaturefile : Bitmap = binding.signaturepanel.signaturePad.getTransparentSignatureBitmap()
+            binding.signaturepanel.signaturePad.clear()
+            binding.signaturepanel.signatureText.visibility = View.VISIBLE
+            binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED)
+            //TODO: signature 이미지 올리기 ..??!!
+            Toast.makeText(requireActivity(), "거래가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+        })
     }
 
     fun initViewModel() {

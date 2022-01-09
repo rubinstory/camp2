@@ -2,7 +2,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res_auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id = "@+id/contract_panel"
     android:layout_width="match_parent"
     android:layout_height="600dp"
@@ -472,16 +472,35 @@ Hey 거기 DJ I love your music
         </ScrollView>
     </LinearLayout>
 
-    <com.github.gcacace.signaturepad.views.SignaturePad
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight = "3.5"
+        >
+    <com.github.gcacace.signaturepad.views.SignaturePad
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id = "@+id/signature_pad"
         app:penColor="@color/black"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        app:clearOnDoubleClick="true"
+        app:penMinWidth="2dp"
+        app:penMaxWidth="2dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background = "@drawable/bottomline" />
 
+        <TextView
+            android:id="@+id/signature_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Signature"
+            android:textAlignment="center"
+            android:textColor="#E6E6E6"
+            android:textSize="30dp" />
+    </RelativeLayout>
     <include
         android:id="@+id/contract_two_button_bar"
         layout="@layout/two_button_bar_for_contract_view"
@@ -491,7 +510,8 @@ Hey 거기 DJ I love your music
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
-        android:layout_weight="1.5" />
+        android:layout_weight="1.5"
+        />
 
 </LinearLayout>
 
