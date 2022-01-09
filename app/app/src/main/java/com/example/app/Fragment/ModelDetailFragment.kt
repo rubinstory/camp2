@@ -95,11 +95,11 @@ class ModelDetailFragment : Fragment() {
     }
 
     fun setContractBtn() {
-//        binding.twoBtnBar.modelContractBtn.setOnClickListener {
-//            requireActivity().supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragment, Contract())
-//                .commit()
-//        }
+        binding.twoBtnBar.modelContractBtn.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment, ContractFragment())
+                .commit()
+        }
     }
 
 
