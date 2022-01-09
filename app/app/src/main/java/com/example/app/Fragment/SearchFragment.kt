@@ -27,10 +27,7 @@ class SearchFragment : Fragment() {
 //        var influencers = arrayOf("Hannah", "Goodal")
 //
 //        val adapter = ArrayAdapter<>(R.layout.circle_img_view)
-
-
-
-
+        return binding.root
 
     }
 }

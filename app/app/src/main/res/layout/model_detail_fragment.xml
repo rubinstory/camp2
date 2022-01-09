@@ -11,84 +11,85 @@
     app:umanoPanelHeight = "0dp"
     app:umanoDragView = "@id/siganaturepanel"
     app:umanoOverlay="true"
-    app:umanoShadowHeight="0dp">
+    app:umanoShadowHeight="0dp"
+    tools:ignore="MissingClass">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id = "@+id/constraintlayout"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
-    <include
-        android:id="@+id/top_bar_with_back_btn"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id = "@+id/constraintlayout"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        app2:layout_constraintTop_toTopOf="parent"
-        layout="@layout/top_bar_with_back_btn" />
-
-    <include
-        android:id="@+id/model_profile_view"
-        layout="@layout/model_detail_profile"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app2:layout_constraintTop_toBottomOf="@id/top_bar_with_back_btn"
-        app2:layout_constraintWidth_percent="1.0"
-        app2:layout_constraintHeight_percent="0.4"/>
-
-    <include
-        android:id="@+id/two_btn_bar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app2:layout_constraintTop_toBottomOf="@id/model_profile_view"
-        app2:layout_constraintHeight_percent="0.075"
-        layout="@layout/two_button_bar"/>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/model_profile_tab_bar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app2:layout_constraintHeight_percent="0.075"
-        app2:layout_constraintTop_toBottomOf="@id/two_btn_bar"
-        app2:layout_constraintWidth_percent="1.0"
-        app2:tabIndicatorColor="@color/orange"
-        app2:tabSelectedTextColor="@color/black"
-        app2:tabTextAppearance="@style/tabTextStyle"
-        app2:tabTextColor="@color/gray"
-        tools:layout_editor_absoluteX="0dp">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <include
+            android:id="@+id/top_bar_with_back_btn"
             android:layout_height="wrap_content"
-            android:text="PORTFOLIO" />
+            android:layout_width="match_parent"
+            app2:layout_constraintTop_toTopOf="parent"
+            layout="@layout/top_bar_with_back_btn" />
 
-        <com.google.android.material.tabs.TabItem
+        <include
+            android:id="@+id/model_profile_view"
+            layout="@layout/model_detail_profile"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="VIDEO" />
+            android:layout_height="0dp"
+            app2:layout_constraintTop_toBottomOf="@id/top_bar_with_back_btn"
+            app2:layout_constraintWidth_percent="1.0"
+            app2:layout_constraintHeight_percent="0.4"/>
 
-        <com.google.android.material.tabs.TabItem
+        <include
+            android:id="@+id/two_btn_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app2:layout_constraintTop_toBottomOf="@id/model_profile_view"
+            app2:layout_constraintHeight_percent="0.075"
+            layout="@layout/two_button_bar"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/model_profile_tab_bar"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="EXTRA" />
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app2:layout_constraintHeight_percent="0.075"
+            app2:layout_constraintTop_toBottomOf="@id/two_btn_bar"
+            app2:layout_constraintWidth_percent="1.0"
+            app2:tabIndicatorColor="@color/black"
+            app2:tabSelectedTextColor="@color/black"
+            app2:tabTextAppearance="@style/tabTextStyle"
+            app2:tabTextColor="@color/gray"
+            tools:layout_editor_absoluteX="0dp">
 
-    </com.google.android.material.tabs.TabLayout>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="PORTFOLIO" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/model_detail_viewpager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="13dp"
-        app2:layout_constraintBottom_toBottomOf="parent"
-        app2:layout_constraintHeight_percent="0.35"
-        app2:layout_constraintTop_toBottomOf="@id/model_profile_tab_bar"
-        app2:layout_constraintVertical_bias="0.0"
-        app2:layout_constraintWidth_percent="1.0"
-        tools:layout_editor_absoluteX="0dp"></androidx.viewpager2.widget.ViewPager2>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="VIDEO" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="EXTRA" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/model_detail_viewpager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="13dp"
+            app2:layout_constraintBottom_toBottomOf="parent"
+            app2:layout_constraintHeight_percent="0.35"
+            app2:layout_constraintTop_toBottomOf="@id/model_profile_tab_bar"
+            app2:layout_constraintVertical_bias="0.0"
+            app2:layout_constraintWidth_percent="1.0"
+            tools:layout_editor_absoluteX="0dp"></androidx.viewpager2.widget.ViewPager2>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         android:id="@+id/signaturepanel"
         layout = "@layout/signpanel"/>
 
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
