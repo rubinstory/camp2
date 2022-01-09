@@ -100,6 +100,7 @@ class ModelDetailFragment : Fragment() {
         binding.modelDetailViewpager.startAnimation(animation3)
     }
 
+
     fun setContractButton() {
         binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
             binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
@@ -144,9 +145,10 @@ class ModelDetailFragment : Fragment() {
         })
     }
 
-    fun contractAccept(){
+    fun contractAccept() {
         binding.signaturepanel.contractTwoButtonBar.accpetBtn.setOnClickListener(View.OnClickListener {
-            val signaturefile : Bitmap = binding.signaturepanel.signaturePad.getTransparentSignatureBitmap()
+            val signaturefile: Bitmap =
+                binding.signaturepanel.signaturePad.getTransparentSignatureBitmap()
             binding.signaturepanel.signaturePad.clear()
             binding.signaturepanel.signatureText.visibility = View.VISIBLE
             binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED)
@@ -154,6 +156,8 @@ class ModelDetailFragment : Fragment() {
             Toast.makeText(requireActivity(), "거래가 완료되었습니다.", Toast.LENGTH_SHORT).show()
         })
     }
+
+
 
     fun initViewModel() {
         val repository = InfluencerRepository()

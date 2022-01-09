@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.app.R
 import com.example.app.Register.Register
 import com.example.app.Register.RegisterRepository
 import com.example.app.Register.RegisterViewModel
@@ -32,6 +34,7 @@ class SignUpFragment : Fragment() {
             name = arguments?.getString("name")!!
             email = arguments?.getString("email")!!
         }
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         setView()
         initSignUpButton()
         return binding.root

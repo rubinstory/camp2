@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.app.Authentication.Authentication
@@ -35,6 +36,7 @@ class SignInFragment : Fragment() {
     ): View? {
         _binding = SigninFragmentBinding.inflate(inflater, container, false)
         setLoginAndSignupBtn()
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         return binding.root
     }
 
