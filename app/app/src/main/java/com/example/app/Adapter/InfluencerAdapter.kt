@@ -54,6 +54,7 @@ class InfluencerAdapter(private val context: Context): RecyclerView.Adapter<Infl
                 var modelDetailFragment = ModelDetailFragment()
                 var bundle = Bundle()
                 bundle.putInt("id", item.id)
+                modelDetailFragment.arguments = bundle
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                     .replace(R.id.fragment, modelDetailFragment)
