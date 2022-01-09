@@ -18,7 +18,7 @@
         android:weightSum="10">
 
         <Button
-            android:id="@+id/model_follow_btn"
+            android:id="@+id/decline_btn"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background_white"
@@ -37,7 +37,7 @@
             android:layout_gravity="center" />
 
         <Button
-            android:id="@+id/model_contract_btn"
+            android:id="@+id/accpet_btn"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background_orange"
