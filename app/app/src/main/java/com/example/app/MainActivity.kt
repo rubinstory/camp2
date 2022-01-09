@@ -44,15 +44,7 @@ class MainActivity : AppCompatActivity() {
             override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
                 super.onFragmentAttached(fm, f, context)
                 checkTokenAuth()
-
-                when(f) {
-                    is MainFragment -> {
-                        changeDropDownButtonColor("white")
-                    }
-                    else -> {
-                        changeDropDownButtonColor("black")
-                    }
-                }
+                changeDropDownButtonColor(window.statusBarColor)
             }
         }, true)
 
@@ -84,7 +76,6 @@ class MainActivity : AppCompatActivity() {
                 ACCESS_GRANTED -> {
                     binding.dropdownLoginBtn.setOnClickListener {
                         closeDropDownMenu()
-                        changeDropDownButtonColor("black")
                         supportFragmentManager.beginTransaction()
                             .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                             .replace(R.id.fragment, SignOutFragment())
@@ -94,7 +85,6 @@ class MainActivity : AppCompatActivity() {
                 else -> {
                     binding.dropdownLoginBtn.setOnClickListener {
                         closeDropDownMenu()
-                        changeDropDownButtonColor("black")
                         supportFragmentManager.beginTransaction()
                             .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                             .replace(R.id.fragment, SignInFragment())
@@ -106,14 +96,15 @@ class MainActivity : AppCompatActivity() {
         return t
     }
 
-    fun changeDropDownButtonColor(color: String) {
-        var tintColor: Int = R.color.black
+    fun changeDropDownButtonColor(color: Int) {
+//        var tintColor: Int = R.color.black
+        var tintColor: Int = color
         var backgroundColor: Int = R.color.white
 
-        if (color == "white") {
-            tintColor = R.color.white
-            backgroundColor = R.color.black
-        }
+//        if (color == R.color.white) {
+//            tintColor = R.color.white
+//            backgroundColor = R.color.black
+//        }
 
         binding.dropdownMenuBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
         binding.dropdownMenuBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
