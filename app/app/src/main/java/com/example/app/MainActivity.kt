@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.app.Authentication.AuthenticationRepository
 import com.example.app.Authentication.AuthenticationViewModel
 import com.example.app.Authentication.AuthenticationViewModelFactory
+import com.example.app.Fragment.ContractFragment
 import com.example.app.Fragment.SignInFragment
 import com.example.app.Fragment.MainFragment
 import com.example.app.Fragment.SignOutFragment
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }, true)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment, MainFragment())
+            .replace(R.id.fragment, ContractFragment())
             .commit()
     }
 

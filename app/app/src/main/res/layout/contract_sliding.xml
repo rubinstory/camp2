@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res_auto"
+    android:id="@+id/contractview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    app:unamoDragView = "@id/siganaturepanel"
+    app:unamoPanelHeight = "100dp"
+    app:unamoOverlay="true"
+    app:unamoShadowHeight="0dp">
+
+    <include
+        layout= "@layout/model_detail_fragment"/>
+
+    <include
+        android:id="@+id/siganaturepanel"
+        layout = "@layout/signpanel"/>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
