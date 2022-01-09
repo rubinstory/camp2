@@ -8,6 +8,7 @@
     android:gravity="center"
     android:id="@+id/model_profile_item">
     <androidx.cardview.widget.CardView
+        android:id="@+id/model_profile_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="0dp"
