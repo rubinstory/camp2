@@ -43,7 +43,7 @@ class ModelDetailFragment : Fragment() {
         videoAdapter = VideoAdapter(this.requireContext())
 
         initViewModel()
-        setFollowButton()
+        setContractBtn()
         setTabLayout()
         activateFadeInAnimationForEachLinearLayouts()
         return binding.root
@@ -94,13 +94,14 @@ class ModelDetailFragment : Fragment() {
         binding.modelDetailViewpager.startAnimation(animation3)
     }
 
-    fun setFollowButton() {
-        binding.twoBtnBar.modelContractBtn.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment, SignInFragment())
-                .commit()
-        }
+    fun setContractBtn() {
+//        binding.twoBtnBar.modelContractBtn.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment, Contract())
+//                .commit()
+//        }
     }
+
 
     fun initViewModel() {
         val repository = InfluencerRepository()
