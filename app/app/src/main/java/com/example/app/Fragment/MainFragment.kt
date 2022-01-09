@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.MediaController
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -18,7 +19,6 @@ import com.example.app.Influencer.InfluencerRepository
 import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
 import com.example.app.R
-import com.example.app.Video.VideoItem
 import com.example.app.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
@@ -32,6 +32,8 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
+
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
 
         setAnimation()
         influencerAdapter = InfluencerAdapter(this.requireContext())
