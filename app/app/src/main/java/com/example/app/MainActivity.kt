@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.AnimationUtils
+import androidx.annotation.ColorLong
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -44,22 +46,32 @@ class MainActivity : AppCompatActivity() {
             override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
                 super.onFragmentAttached(fm, f, context)
                 checkTokenAuth()
+            }
+
+            override fun onFragmentStarted(fm: FragmentManager, f: Fragment) {
+                super.onFragmentStarted(fm, f)
                 changeDropDownButtonColor(window.statusBarColor)
+                checkDropDownMenuAndClose()
             }
         }, true)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment, ContractFragment())
+            .replace(R.id.fragment, MainFragment())
             .commit()
     }
 
     fun inintHomeBtn() {
         binding.dropdownHomeButton.setOnClickListener {
-            closeDropDownMenu()
             supportFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 .replace(R.id.fragment, MainFragment())
                 .commit()
+        }
+    }
+
+    fun checkDropDownMenuAndClose() {
+        when(binding.dropdownLoginBtn.visibility) {
+            FloatingActionButton.VISIBLE -> closeDropDownMenu()
         }
     }
 
@@ -97,26 +109,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun changeDropDownButtonColor(color: Int) {
-//        var tintColor: Int = R.color.black
         var tintColor: Int = color
-        var backgroundColor: Int = R.color.white
+        var backgroundColor: Int = ContextCompat.getColor(this, R.color.white)
 
-//        if (color == R.color.white) {
-//            tintColor = R.color.white
-//            backgroundColor = R.color.black
-//        }
+        if (color == ContextCompat.getColor(this, R.color.white)) {
+            backgroundColor = ContextCompat.getColor(this, R.color.black)
+        }
 
-        binding.dropdownMenuBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
-        binding.dropdownMenuBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
+        binding.dropdownMenuBtn.imageTintList = ColorStateList.valueOf(backgroundColor)
+        binding.dropdownMenuBtn.backgroundTintList = ColorStateList.valueOf(tintColor)
 
-        binding.dropdownHomeButton.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
-        binding.dropdownHomeButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
+        binding.dropdownHomeButton.imageTintList = ColorStateList.valueOf(tintColor)
+        binding.dropdownHomeButton.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
-        binding.dropdownSearchBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
-        binding.dropdownSearchBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
+        binding.dropdownSearchBtn.imageTintList = ColorStateList.valueOf(tintColor)
+        binding.dropdownSearchBtn.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
-        binding.dropdownLoginBtn.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this, backgroundColor))
-        binding.dropdownLoginBtn.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, tintColor))
+        binding.dropdownLoginBtn.imageTintList = ColorStateList.valueOf(tintColor)
+        binding.dropdownLoginBtn.backgroundTintList = ColorStateList.valueOf(backgroundColor)
     }
 
     fun initMenuButton() {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.app.Authentication.Authentication
@@ -24,6 +25,7 @@ class SignOutFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = SignOutFragmentBinding.inflate(inflater, container, false)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         setSignOutBtn()
         return binding.root
     }
