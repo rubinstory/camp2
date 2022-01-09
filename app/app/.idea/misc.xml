@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/bottomline.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/bottomline_white.xml" value="0.2" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/boxline.xml" value="0.2703125" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/button_background.xml" value="0.3380208333333333" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/button_background_orange.xml" value="0.2" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/button_background_white.xml" value="0.3380208333333333" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/contract_button_background.xml" value="0.2" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/follow_button_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/lineabove.xml" value="0.2703125" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/text_input_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/drawable/topline.xml" value="0.2703125" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/activity_main.xml" value="0.10520833333333333" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/circle_img_view.xml" value="0.10520833333333333" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/contract_sign.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/contract_sliding.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/main_fragment.xml" value="0.10520833333333333" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/model_detail_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/model_detail_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/model_profile_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/search_fragment.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/sign_out_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/signin_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/signpanel.xml" value="0.24513888888888888" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/signup_fragment.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/small_circle_img_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/text_input_field.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/top_bar_with_back_btn.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/top_bar_with_side_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/two_button_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/two_button_bar_for_contract_view.xml" value="0.22" />
+        <entry key="..\:/Users/asdf_/Desktop/madcamp/camp2/app/app/src/main/res/layout/video_item_view.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
