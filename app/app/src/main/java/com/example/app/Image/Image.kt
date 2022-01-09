@@ -1,4 +1,4 @@
-package com.example.app.Item
+package com.example.app.Image
 
 import com.google.gson.annotations.SerializedName
 

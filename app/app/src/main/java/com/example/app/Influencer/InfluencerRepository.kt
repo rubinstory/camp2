@@ -6,9 +6,7 @@ import java.util.List
 
 class InfluencerRepository {
 
-    suspend fun getInfluncers(id: Int): Call<List<Influencer>> {
-        return RetrofitInstance.api.get_influencers()
-    }
+    fun getInfluencers() = RetrofitInstance.api.get_influencers()
 
-    fun getInfluencerById(id: Int) = RetrofitInstance.api.get_influencer_by_pk(id)
+    suspend fun getInfluencerById(id: Int) = RetrofitInstance.api.get_influencer_by_pk(id)
 }

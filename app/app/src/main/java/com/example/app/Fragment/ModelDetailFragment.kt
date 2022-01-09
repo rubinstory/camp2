@@ -21,6 +21,7 @@ import com.example.app.databinding.ModelDetailFragmentBinding
 class ModelDetailFragment : Fragment() {
     private lateinit var viewModel: InfluencerViewModel
     private lateinit var videoAdapter: VideoAdapter
+    private var influencerId: Int = 1
 
     lateinit var influencer: Influencer
     private var _binding: ModelDetailFragmentBinding? = null
@@ -36,6 +37,8 @@ class ModelDetailFragment : Fragment() {
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),
             R.color.white
         )
+        influencerId = arguments?.getInt("id")!!
+
         initViewModel()
         setFollowButton()
         setVideoAdapter()
@@ -75,19 +78,11 @@ class ModelDetailFragment : Fragment() {
         }
     }
 
-    fun setDataToView() {
-        binding.modelProfileView.modelDetailName.text = influencer.getFullName()
-        binding.modelProfileView.modelDetailCountry.text = influencer.country
-        binding.modelProfileView.modelProfileAge.text = influencer.age.toString()
-        binding.modelProfileView.modelProfileHeight.text = influencer.height.toString()
-        binding.modelProfileView.modelProfileWeight.text = influencer.weight.toString()
-    }
-
     fun initViewModel() {
         val repository = InfluencerRepository()
         val influencerViewModelFactory = InfluencerViewModelFactory(repository)
         viewModel = ViewModelProvider(this, influencerViewModelFactory).get(InfluencerViewModel::class.java)
-        viewModel.getInfluencerById(1)
+        viewModel.getInfluencerById(influencerId)
         viewModel.influencerList.observe(viewLifecycleOwner, Observer { influencerList ->
             var influencer = influencerList[0]
             binding.modelProfileView.modelDetailName.text = influencer.getFullName()
@@ -95,7 +90,6 @@ class ModelDetailFragment : Fragment() {
             binding.modelProfileView.modelProfileAge.text = influencer.age.toString()
             binding.modelProfileView.modelProfileHeight.text = influencer.height.toString()
             binding.modelProfileView.modelProfileWeight.text = influencer.weight.toString()
-//            binding.modelProfileView.profileCircleView.modelProfileImg.setImage
             Glide.with(this).load(influencer.imageList[0].url).into(binding.modelProfileView.profileCircleView.modelProfileImg)
         })
 
