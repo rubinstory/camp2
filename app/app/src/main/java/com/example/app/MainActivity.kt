@@ -17,6 +17,7 @@ import com.example.app.Authentication.AuthenticationViewModel
 import com.example.app.Authentication.AuthenticationViewModelFactory
 import com.example.app.Fragment.SignInFragment
 import com.example.app.Fragment.MainFragment
+import com.example.app.Fragment.SearchFragment
 import com.example.app.Fragment.SignOutFragment
 import com.example.app.databinding.ActivityMainBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -66,6 +67,16 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 .replace(R.id.fragment, MainFragment())
+                .commit()
+        }
+    }
+
+    fun inintSearchBtn(){
+        binding.dropdownSearchBtn.setOnClickListener{
+            closeDropDownMenu()
+            supportFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .replace(R.id.fragment, SearchFragment())
                 .commit()
         }
     }
@@ -135,6 +146,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         inintHomeBtn()
+        inintSearchBtn()
     }
 
     fun openDropDownMenu() {

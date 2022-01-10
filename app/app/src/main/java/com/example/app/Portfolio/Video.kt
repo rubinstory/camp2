@@ -1,8 +1,8 @@
-package com.example.app.Item
+package com.example.app.Image
 
 import com.google.gson.annotations.SerializedName
 
-data class Image (
-    @SerializedName("image") val url: String,
+data class Video (
+    @SerializedName("video") val url: String,
     @SerializedName("influencer") var influencer: Int
 )

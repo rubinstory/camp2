@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id = "@+id/contract_panel"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:weightSum= "20"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:weightSum="50">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:fontFamily="@font/open_sans"
+            android:paddingLeft="5dp"
+            android:text="CONTRACT"
+            android:textColor="@color/orange"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:fontFamily="@font/open_sans"
+            android:paddingLeft="5dp"
+            android:background="@drawable/bottomline"
+            android:text="Agency Name"
+            android:textColor="#AEAEAE"
+            android:textSize="9dp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="45"
+            android:padding="15dp"
+            android:requiresFadingEdge="vertical"
+            android:scrollbarThumbVertical="@color/orange">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:textSize="9dp"
+                android:textAlignment="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor = "@color/black"
+                android:lineSpacingMultiplier="1.5"
+                android:fontFamily="@font/open_sans"
+                android:text="
+이 밤 그날의 반딧불을 당신의
+창 가까이 보낼게요
+사랑한다는 말이에요
+나 우리의 첫 입맞춤을 떠올려
+그럼 언제든 눈을 감고
+가장 먼 곳으로 가요
+난 파도가 머물던
+모래 위에 적힌 글씨처럼
+그대가 멀리 사라져 버릴 것 같아
+늘 그리워, 그리워
+여기 내 마음속에 모든 말을
+다 꺼내어 줄 순 없지만
+사랑한다는 말이에요
+어떻게 나에게
+그대란 행운이 온 걸까
+지금 우리 함께 있다면
+아, 얼마나 좋을까요
+난 파도가 머물던
+모래 위에 적힌 글씨처럼
+그대가 멀리 사라져 버릴 것 같아
+또 그리워 더 그리워
+나의 일기장 안에 모든 말을
+다 꺼내어 줄 순 없지만
+사랑한다는 말
+이 밤 그날의 반딧불을 당신의
+창 가까이 띄울게요
+좋은 꿈이길 바라요
+1. 이 지금 - 아이유
+(작사: 아이유 / 작곡: 제휘 /  편곡: 제휘)
+
+이건 비밀이야
+아무에게도 고백하지 않았던
+이야기를 들려주면
+큰 눈으로 너는 묻지
+How wow wow Whatever
+나 실은 말이야
+저기 아득한 미래로부터 날아왔어
+쏟아질 듯이 빼곡한 별들 사이를 지나
+Fly fly fly
+있지 그곳도 사실 바보들 투성이야
+아니 매우 반짝이는 건 오히려
+Now now now
+이 하루 이 지금 우리
+눈부셔 아름다워
+이 불꽃놀이는 끝나지 않을 거야
+Ooh Whatever
+흐린 날이면
+거짓말처럼 무섭게 깜깜했지
+새침데기 태양은 뜨겁기는커녕
+peacock
+Blue blue blue Whatever
+매일매일
+제멋대로인 바람결을 땋아서 만든
+이 나침반이 가리킨 그곳에서 발견
+Oh That's you you yes you
+있지 저런 건 그저 자그만 돌멩이야
+빛이 나는 건 여기 있잖아
+Life is cool cool cool
+시간은 많아 이대로면 아마
+영원히 살 수 있지 않을까
+안녕 나의 주인공 그래 너를 만나러 나
+짜잔 우아하게 등장
+바로 이 하루 이 지금 우리
+눈부셔 아름다워
+나는 확실히 알아 오늘의 불꽃놀이는
+끝나지 않을 거야
+우우우 우우우
+우우우 우우우
+더 놀라운 건 지금부터야
+
+
+
+2. 팔레트 (Feat. G-DRAGON) - 아이유
+(작사: 아이유 / 작곡: 아이유 /  편곡: 이종훈)
+
+팔레트 (Feat. G-DRAGON)
+
+이상하게도 요즘엔
+그냥 쉬운 게 좋아
+하긴 그래도 여전히
+코린 음악은 좋더라
+Hot Pink 보다 진한
+보라색을 더 좋아해
+또 뭐더라 단추 있는
+Pajamas Lipstick
+좀 짓궂은 장난들
+I like it I'm twenty five
+날 좋아하는 거 알아
+I got this I'm truly fine
+이제 조금 알 것 같아 날
+긴 머리보다 반듯이 자른
+단발이 좋아
+하긴 그래도 좋은 날 부를 땐
+참 예뻤더라
+오 왜 그럴까 조금
+촌스러운 걸 좋아해
+그림보다 빼곡히 채운
+Palette 일기 잠들었던 시간들
+I like it I'm twenty five
+날 미워하는 거 알아
+I got this I'm truly fine
+이제 조금 알 것 같아 날
+어려서 모든 게 어려워
+잔소리에 매 서러워
+꾸중만 듣던 철부지 애
+겨우 스무고개 넘어
+기쁨도 잠시 어머
+아프니까 웬 청춘이래
+지은아 오빠는 말이야
+지금 막 서른인데
+나는 절대로 아니야
+근데 막 어른이 돼
+아직도 한참 멀었는데
+너보다 다섯 살 밖에 안 먹었는데
+스물 위 서른 아래
+고맘때 Right there
+애도 어른도 아닌 나이 때
+그저 나일 때
+가장 찬란하게 빛이 나
+어둠이 드리워질 때도 겁내지 마
+너무 아름다워서 꽃잎 활짝 펴서
+언제나 사랑 받는 아이 YOU
+Palette 일기 잠들었던 시간들
+I like it I'm twenty five
+날 좋아하는 거 알아
+I got this I'm truly fine
+이제 조금 알 것 같아 날
+아직 할 말이 많아
+I like it I'm twenty five
+날 미워하는 거 알아
+I got this I've truly found
+이제 조금 알 것 같아 날
+
+
+
+3. 이런 엔딩 - 아이유
+(작사: 아이유 / 작곡: 샘김 (Sam Kim) /  편곡: 이종훈)
+
+안녕 오랜만이야
+물음표 없이 참 너다운 목소리
+정해진 규칙처럼
+추운 문가에 늘 똑같은 네 자리
+제대로 잘 먹어 다 지나가니까
+예전처럼 잠도 잘 자게 될 거야
+진심으로 빌게
+너는 더 행복할 자격이 있어
+그런 말은 하지 마 제발
+그 말이 더 아픈 거 알잖아
+사랑해줄 거라며 다 뭐야
+어떤 맘을 준 건지 너는 모를 거야
+외로웠던 만큼
+너를 너보다 사랑해줄 사람
+꼭 만났으면 해
+내가 아니라서 미안해
+주는 게 쉽지가 않아
+그런 말은 하지 마 제발
+그 말이 더 아픈 거 알잖아
+사랑해줄 거라며 다 뭐야
+어떤 맘을 준 건지 끝내 모를
+솔직히 말해줄래 제발
+너라면 다 믿는 거 알잖아
+네 말대로 언젠가 나도
+나 같은 누군가에게
+사랑 받게 될까
+
+
+
+4. 잼잼 - 아이유
+(작사: 선우정아, 아이유 / 작곡: 선우정아 /  편곡: 선우정아, 윤석철)
+
+알 만한 사람끼리 이 정도 거짓말엔
+속아주는 게 예의 아닌가요
+될래 그깟 멍청이 뭐든 해봐요 우리
+생각할 겨를조차 주지 마요
+설탕이 필요해 난 몸에
+나쁜 게 좀 필요해
+뜨뜻미지근한 건 그만해
+막 솔직하겠다고 그게 뭐라고
+I need some sugar
+I need something fake
+진심이란 게 뭐야 난 상관 안 해
+둘 다 알잖아 Limit 곧 끝날 텐데
+식기 전에 날 부디 한껏 녹여줘 Babe
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+알 만한 사람끼리 이 정도 거짓말엔
+속아주는 게 예의 아닌가요
+될래 그깟 멍청이 뭐든 해봐요 우리
+생각할 겨를조차 주지 마요
+Jam 설탕 탕 탕 사랑 랑 랑
+Jam 설탕 탕 탕 사랑 랑 랑
+사랑한다고 해
+입에 발린 말을 해 예쁘게
+끈적끈적 절여서 보관할게
+썩지 않게 아주 오래
+I need some sugar
+I need something fake
+천연 그런 거 몰라 자극적이게
+굳이 알려고 하지 말자
+의미 그놈의 의미
+어서 다 녹여줘 Babe
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+Jam 아주 형체도 알아볼 수 없게
+Jam 이것 봐 온몸에 묻었어
+사랑 사랑 사랑
+Jam Baby make me be sweet
+Baby make me so sweet baby
+Jam Oh Baby make me be sweet
+Baby make me so sweet
+알 만한 사람끼리 이 정도 거짓말엔
+속아주는 게 예의 아닌가요
+될래 그깟 멍청이 뭐든 해봐요 우리
+멍청이 우린
+생각할 겨를조차 주지 마요
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+덮고 그 위에 다시 얹고 또다시
+
+
+
+5. Black Out - 아이유
+(작사: 아이유 / 작곡: 이종훈 /  편곡: 이종훈)
+
+놔 봐 나 완벽해 멀쩡해
+집에 안 가도 돼
+정말 구구단도 가능해
+칠칠에 사십구
+안 믿는 거 다 알아
+Nothing special
+기분 좋아서 그래
+Something special
+절대 나 괜찮아 맹세해
+아 너나 좀 잘해
+어머 쟤네 둘이서 키스해
+하라지 뭐 어때
+가서 아무나 안아
+Nothing special
+기분 좋아서 그래
+Something special
+샌디에이고나 산티아고나
+너는 상관없지
+That she said
+Course course I don't care
+오늘 다시 안 오겠지
+당연히 올 리가 없지
+여기부턴 기억 안 할래
+Hey ms. 델러 웨이
+I love your party
+이리 와서 나의 키스를 받아줘
+사랑이 많은 건 전혀
+나쁜 게 아니래요
+잠깐 바닥이 일어났어
+나 진짜 억울해
+봐봐 쟤 나한테 인사해
+오지 마 위험해
+이상하게 보지 마
+Nothing special
+기분 좋아서 그래
+Something special
+두 갈래로 보일 때는
+대개는 왼쪽이 맞아
+That he said But 나 멀쩡해
+오늘 다시 안 오겠지
+당연히 올 리가 없지
+여기부턴 기억 안 할래
+Hey 거기 DJ I love your music
+도대체 나를 어떻게 한 거야
+다스베이더만 아니면
+네가 내 첫사랑이야 Oh
+Hey ms. 델러 웨이
+I love your party
+이리 와서 나의 키스를 받아줘
+사랑이 많은 건 전혀
+나쁜 게 아니래요
+Hey 거기 DJ I love your music
+도대체 나를 어떻게 한 거야
+다스베이더만 아니면
+네가 내 첫사랑이야 Oh
+
+
+
+6. 마침표 - 아이유
+(작사: 아이유 / 작곡: 손성제 /  편곡: 손성제)
+
+알고 있었어 무슨 말인지
+무슨 마음인지 다 알아
+하루 더 딱 하루만 더
+미루고 싶었어
+그래야겠지 결국 언젠간
+제일 어려운 숙제를 해야지
+마지막 인사가 이렇게 늦어서 미안
+많이 보고 싶지만
+널 다시는 만나지 않았음 좋겠어
+아파 울지만 다신 너로 인해
+웃지 않았음 좋겠어
+한 움큼씩 나눴던 진심도
+너무 쉬웠던 대답도
+못 잊게 사랑한 여러 번의 계절도
+안녕 모두 안녕
+전부 알 것 같아도 더 이상의
+이해는 없었음 좋겠어
+묻고 싶지만 끝내 그 대답을
+듣지 못했음 좋겠어
+변함없이 정직한 두 눈도
+약속한 겨울바다도
+못 잊게 행복했던 어린 날의 나도
+안녕 모두 안녕
+안녕 모두
+
+
+
+7. 그렇게 사랑은 - 아이유
+(작사: 이병우 / 작곡: 이병우 /  편곡: 이병우)
+
+그렇게 사랑은 간절히 불러보지만
+아무런 대답이 없는
+그렇게 사랑은 아무리 다가갈수록
+멀어져 가는
+얼마나 사랑은 수많은 사람들 중에
+오직 그대 하나
+얼마나 사랑은
+걷잡을 수 없는 바람이 되어
+가질 수 없는
+꿈결이 너를 내게 데려온
+밤새 처음 들은 목소리가
+웃음이 되고
+어느새 앞서간 너의 뒷모습
+잠시도 멈추지 못해
+내 마음 터질 것 같아
+너를 사랑하는
+혼자만의 사랑이라도
+내 맘 하나 가득
+소중한 모든 것인 것을
+너를 사랑하는
+혼자만의 사랑이라도
+시들지 않는 영원한 것을
+남겨진 하늘 검은 밤바람
+떠나간 너의 기억
+눈부시게 밝혀져 있고
+모두 사라질 세상 속에서
+널 향한 조급한 그리움
+더욱 커져만 가는
+너를 사랑하는
+혼자만의 사랑이라도
+내 맘 하나 가득
+소중한 모든 것인 것을
+너를 사랑하는
+혼자만의 사랑이라도
+시들지 않는 영원한 것을
+어쩌면 사랑은 닿을 수 없는 너의 손
+애써 잡으려 하는
+어쩌면 사랑은 있지도 않은 곳으로
+찾아가려는
+
+
+
+8. 이름에게 - 아이유
+(작사: 아이유, 김이나 / 작곡: 이종훈 /  편곡: 이종훈, 홍소진)
+
+꿈에서도 그리운 목소리는
+이름 불러도 대답을 하지 않아
+글썽이는 그 메아리만 돌아와
+그 소리를 나 혼자서 들어
+깨어질 듯이 차가워도
+이번에는 결코 놓지 않을게
+아득히 멀어진 그날의 두 손을
+끝없이 길었던
+짙고 어두운 밤 사이로
+조용히 사라진 네 소원을 알아
+오래 기다릴게
+반드시 너를 찾을게
+보이지 않도록 멀어도
+가자 이 새벽이 끝나는 곳으로
+어김없이 내 앞에 선 그 아이는
+고개 숙여도 기어이 울지 않아
+안쓰러워 손을 뻗으면 달아나
+텅 빈 허공을 나 혼자 껴안아
+에어질 듯이 아파와도
+이번에는 결코 잊지 않을게
+한참을 외로이 기다린 그 말을
+끝없이 길었던
+짙고 어두운 밤 사이로
+영원히 사라진 네 소원을 알아
+오래 기다릴게
+반드시 너를 찾을게
+보이지 않도록 멀어도
+가자 이 새벽이 끝나는 곳
+수없이 잃었던
+춥고 모진 날 사이로
+조용히 잊혀진 네 이름을 알아
+멈추지 않을게
+몇 번이라도 외칠게
+믿을 수 없도록 멀어도
+가자 이 새벽이 끝나는 곳으로
+
+출처: https://soulmatt.tistory.com/entry/아이유-IU-Palette-앨범-전곡-노래-가사 [솔맷의 자료창고]" />
+
+        </ScrollView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight = "3.5"
+        >
+    <com.github.gcacace.signaturepad.views.SignaturePad
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id = "@+id/signature_pad"
+        app:penColor="@color/black"
+        app:clearOnDoubleClick="true"
+        app:penMinWidth="2dp"
+        app:penMaxWidth="2dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background = "@drawable/bottomline" />
+
+        <TextView
+            android:id="@+id/signature_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Signature"
+            android:textAlignment="center"
+            android:textColor="#E6E6E6"
+            android:textSize="30dp" />
+    </RelativeLayout>
+    <include
+        android:id="@+id/contract_two_button_bar"
+        layout="@layout/two_button_bar_for_contract_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1.5"
+        />
+
+</LinearLayout>
+
+

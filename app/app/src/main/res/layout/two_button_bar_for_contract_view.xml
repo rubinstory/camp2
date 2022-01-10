@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/two_btn_bar">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/decline_btn"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background_white"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/orange"
+            app:backgroundTint="@null"
+            android:elevation="50dp"
+            android:text="Decline"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:background="@null"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/accpet_btn"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background_orange"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            android:elevation="50dp"
+            android:text="Accept"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

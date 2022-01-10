@@ -5,7 +5,7 @@ import com.example.app.Authentication.Authentication
 import com.example.app.Register.Register
 import com.example.app.Token.Token
 import com.google.gson.annotations.SerializedName
-import java.util.List
+import kotlin.collections.List
 import retrofit2.Call
 import retrofit2.http.*
 
