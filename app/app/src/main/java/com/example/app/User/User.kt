@@ -9,8 +9,8 @@ data class User (
     @SerializedName("id") val id: Int,
     @SerializedName("is_admin") val is_admin: String,
     @SerializedName("username") val username: String,
-    @SerializedName("email") val email: Int,
-    @SerializedName("password") val password: Int,
-    @SerializedName("profile_image") val profile_image: Int,
+    @SerializedName("email") val email: String,
+    @SerializedName("password") val password: String,
+    @SerializedName("profile_image") val profile_image: String,
     @SerializedName("contract") val contractList: List<Contract>,
 )

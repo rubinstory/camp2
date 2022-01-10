@@ -40,7 +40,7 @@ interface DjangoAPI {
     @GET("/accounts/")
     fun get_users(): Call<List<User>>
 
-    @GET("/agency/accounts/{id}")
+    @GET("/accounts/{id}")
     fun get_user_by_pk(@Path("id") id: Int): Call<User>
 
 
