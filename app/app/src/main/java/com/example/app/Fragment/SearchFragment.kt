@@ -39,7 +39,6 @@ class SearchFragment : Fragment() {
         searchAdapter = SearchAdapter(this.requireContext())
         setSearchBarListener()
         return binding.root
-
     }
 
     fun getInfluencerListAndSetSearchAdapter() {

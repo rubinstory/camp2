@@ -4,6 +4,7 @@ import com.example.app.Influencer.Influencer
 import com.example.app.Authentication.Authentication
 import com.example.app.Register.Register
 import com.example.app.Token.Token
+import com.example.app.User.User
 import com.google.gson.annotations.SerializedName
 import kotlin.collections.List
 import retrofit2.Call
@@ -35,4 +36,12 @@ interface DjangoAPI {
 
     @GET("/agency/Influencers/{id}")
     fun get_influencer_by_pk(@Path("id") id:Int): Call<Influencer>
+
+    @GET("/accounts/")
+    fun get_users(): Call<List<User>>
+
+    @GET("/agency/accounts/{id}")
+    fun get_user_by_pk(@Path("id") id: Int): Call<User>
+
+
 }

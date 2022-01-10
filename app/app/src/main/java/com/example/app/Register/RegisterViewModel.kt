@@ -21,6 +21,7 @@ class RegisterViewModel (private val repository: RegisterRepository): ViewModel(
                         var token: Token = response.body()!!
                         RetrofitInstance.ACCESS_TOKEN = token.access_token
                         RetrofitInstance.REFRESH_TOKEN = token.refresh_token
+                        RetrofitInstance.TOKENUSERID = token.user.id
                     }
                 }
 

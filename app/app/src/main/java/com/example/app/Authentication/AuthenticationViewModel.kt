@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
 import retrofit2.http.HTTP
 
 class AuthenticationViewModel (private val repository: AuthenticationRepository): ViewModel() {
@@ -26,9 +27,10 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
                         val token = response.body()!!
                         RetrofitInstance.ACCESS_TOKEN = token.access_token
                         RetrofitInstance.REFRESH_TOKEN = token.refresh_token
+                        RetrofitInstance.TOKENUSERID = token.user.id
+                        HTTP_STATUS.postValue(response.code())
                     }
-                    HTTP_STATUS.postValue(response.code())
-                }
+
                 override fun onFailure(call: Call<Token>, t: Throwable) {
                     Log.e("LOGIN", t.message.toString())
                     HTTP_STATUS.postValue(-1)
@@ -43,6 +45,7 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
                 override fun onResponse(call: Call<Token>, response: Response<Token>) {
                     RetrofitInstance.ACCESS_TOKEN = ""
                     RetrofitInstance.REFRESH_TOKEN = ""
+                    RetrofitInstance.TOKENUSERID = -1
                 }
 
                 override fun onFailure(call: Call<Token>, t: Throwable) {
