@@ -15,22 +15,18 @@ import java.io.ByteArrayOutputStream
 class ContractViewModel (private val repository: ContractRepository): ViewModel() {
     var contractRepository: ContractRepository = ContractRepository()
     var contractList: MutableLiveData<List<Contract>> = MutableLiveData<List<Contract>>()
+    var contractItem: MutableLiveData<Contract> = MutableLiveData<Contract>()
 
-//    fun makeNewContract(newContract: Contract) {
-//        viewModelScope.launch {
-//            contractRepository.contract(newContract).enqueue(object: Callback<Contract> {
-//                override fun onResponse(
-//                    call: Call<Contract>,
-//                    response: Response<Contract>) {
-//                    if (response.isSuccessful){
-//                    }
-//                }
-//                override fun onFailure(call: Call<Contract>, t: Throwable) {
-//                }
-//
-//            })
-//        }
-//    }
+    fun makeContract(contract: ContractUploadItem) {
+        viewModelScope.launch {
+            contractRepository.makeContract(contract).enqueue(object: Callback<Contract> {
+                override fun onResponse(call: Call<Contract>, response: Response<Contract>) {
+                    if (response.isSuccessful) { contractItem.postValue(response.body()) }
+                }
+                override fun onFailure(call: Call<Contract>, t: Throwable) {}
+            })
+        }
+    }
 
     fun getContracts(){
         viewModelScope.launch{

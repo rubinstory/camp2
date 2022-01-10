@@ -7,8 +7,9 @@ import com.google.gson.annotations.SerializedName
 
 data class User (
     @SerializedName("id") val id: Int,
-    @SerializedName("is_admin") val is_admin: String,
+    @SerializedName("is_admin") val is_admin: Boolean,
     @SerializedName("username") val username: String,
     @SerializedName("email") val email: String,
     @SerializedName("profile_image") val profile_image: String,
+    @SerializedName("contract") val contractList: List<Contract>
 )

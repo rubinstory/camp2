@@ -36,6 +36,7 @@ class SignOutFragment: Fragment() {
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         setSignOutBtn()
         setGetCurrentUser()
+        setShowContractBtn()
         return binding.root
     }
 
@@ -62,6 +63,15 @@ class SignOutFragment: Fragment() {
         })
     }
 
+    fun setShowContractBtn() {
+        binding.contractShowBtn.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .replace(R.id.fragment, ContractFragment())
+                .commitAllowingStateLoss()
+        }
+    }
+
     fun setSignOutBtn() {
         binding.signOutBtn.setOnClickListener {
             var repository = AuthenticationRepository()
@@ -79,9 +89,5 @@ class SignOutFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    fun setDataToView() {
-
     }
 }
