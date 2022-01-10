@@ -14,7 +14,8 @@ data class Influencer (
     @SerializedName("country") val country: String,
     @SerializedName("description") val description: String,
     @SerializedName("image") val imageList: List<Image>,
-    @SerializedName("video") val videoList: List<Video>
+    @SerializedName("video") val videoList: List<Video>,
+
 
 ) {
     fun getFullName(): String = last_name + " " + first_name
