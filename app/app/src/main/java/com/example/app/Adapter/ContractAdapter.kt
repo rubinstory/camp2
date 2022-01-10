@@ -1,6 +1,7 @@
 package com.example.app.Adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.app.Contract.Contract
+import com.example.app.Fragment.ContractFragment
 import com.example.app.Influencer.InfluencerRepository
 import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
@@ -62,7 +64,8 @@ class ContractAdapter(private var context: Context) : RecyclerView.Adapter<Contr
                 contractorName.text = user.username
             })
 
-            Glide.with(context).load(RetrofitInstance.BASE_URL + "/" + item.signature).into(signatureImg)
+            Glide.with((context) as MainActivity).load(item.signature).into(signatureImg)
+            Log.d("SIGNATURE_IMG", item.signature)
         }
     }
 
