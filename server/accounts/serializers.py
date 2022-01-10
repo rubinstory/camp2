@@ -7,7 +7,7 @@ from contract.serializers import *
 class UserSerializer(serializers.ModelSerializer):
     # image = serializers.ImageField(use_url = True)
     contract = ContractSerializer(many = True)
-
+    
     def create(self, validated_data):
         user = User.objects.create_user(
             email =validated_data['email'],
