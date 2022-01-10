@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.app.Authentication.Authentication
 import com.example.app.Authentication.AuthenticationRepository
 import com.example.app.Authentication.AuthenticationViewModel
@@ -56,6 +57,8 @@ class SignOutFragment: Fragment() {
         userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
             Log.d("USERNAME", user.username)
             binding.signOutUserName.text = user.username
+            Log.d("PROFILE", user.profile_image)
+            Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)
         })
     }
 

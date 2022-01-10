@@ -10,7 +10,5 @@ data class User (
     @SerializedName("is_admin") val is_admin: String,
     @SerializedName("username") val username: String,
     @SerializedName("email") val email: String,
-    @SerializedName("password") val password: String,
     @SerializedName("profile_image") val profile_image: String,
-    @SerializedName("contract") val contractList: List<Contract>,
 )
