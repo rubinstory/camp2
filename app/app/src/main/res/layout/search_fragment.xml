@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mancj.materialsearchbar.MaterialSearchBar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:mt_hint="Search"
-    >
-
-    <GridView
-        android:id = "@+id/gridView"
+    android:layout_height="match_parent"
+    xmlns:layout="http://schemas.android.com/tools">
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="1.0"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:gravity="center">
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mt_hint="Search" />
+    </LinearLayout>
 
-    </GridView>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="1.0"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintTop_toBottomOf="@+id/search_layout"
+        android:orientation="vertical"
+        android:gravity="center">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_result_view"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
-</com.mancj.materialsearchbar.MaterialSearchBar>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
