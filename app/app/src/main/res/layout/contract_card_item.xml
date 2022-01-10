@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="30dp"
-    android:background="@color/gray">
+    android:padding="30dp">
     <androidx.cardview.widget.CardView
         android:id="@+id/temp"
         android:layout_width="0dp"

@@ -11,3 +11,6 @@ class ContractSerializer(serializers.ModelSerializer):
         model = Contract
         fields = '__all__'
 
+    class get_image_url(self, obj):
+        return obj.image.url
+
