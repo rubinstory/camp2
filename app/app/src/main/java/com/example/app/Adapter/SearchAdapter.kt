@@ -25,15 +25,16 @@ import com.example.app.R
 import com.example.app.databinding.CircleImgViewBinding
 import com.example.app.databinding.MainFragmentBinding
 import com.example.app.databinding.ModelProfileItemBinding
+import com.example.app.databinding.ModelSearchItemBinding
 
 class SearchAdapter(private val context: Context): RecyclerView.Adapter<SearchAdapter.ViewHolder>(),
     Filterable {
-    private lateinit var viewPagerBinding: CircleImgViewBinding
+    private lateinit var viewPagerBinding: ModelSearchItemBinding
     var itemList = mutableListOf<Influencer>()
     var filterList = mutableListOf<Influencer>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        viewPagerBinding = CircleImgViewBinding.inflate(LayoutInflater.from(context), parent, false)
+        viewPagerBinding = ModelSearchItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(viewPagerBinding)
     }
 
@@ -45,10 +46,14 @@ class SearchAdapter(private val context: Context): RecyclerView.Adapter<SearchAd
         return filterList.size
     }
 
-    inner class ViewHolder(binding: CircleImgViewBinding): RecyclerView.ViewHolder(binding.root)  {
+    inner class ViewHolder(binding: ModelSearchItemBinding): RecyclerView.ViewHolder(binding.root)  {
         private val profileImg: ImageView = binding.modelProfileImg
+        private val profileName: TextView = binding.modelName
+
         fun bind(item: Influencer) {
             Glide.with(context).load(item.imageList[0].url).into(profileImg)
+            profileName.text = item.getFullName()
+
             profileImg.setOnClickListener {
                 val modelDetailFragment = ModelDetailFragment()
                 val bundle = Bundle()

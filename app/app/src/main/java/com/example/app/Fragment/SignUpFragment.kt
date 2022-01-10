@@ -15,21 +15,21 @@ import com.example.app.Register.RegisterRepository
 import com.example.app.Register.RegisterViewModel
 import com.example.app.Register.RegisterViewModelFactory
 import com.example.app.RetrofitInstance
-import com.example.app.databinding.SignupFragmentBinding
+import com.example.app.databinding.SignUpFragmentBinding
 
 class SignUpFragment : Fragment() {
     private lateinit var viewModel: RegisterViewModel
 
     private var name: String = ""
     private var email: String = ""
-    private var _binding: SignupFragmentBinding? = null
+    private var _binding: SignUpFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = SignupFragmentBinding.inflate(inflater, container, false)
+        _binding = SignUpFragmentBinding.inflate(inflater, container, false)
         if (arguments?.isEmpty == false) {
             name = arguments?.getString("name")!!
             email = arguments?.getString("email")!!

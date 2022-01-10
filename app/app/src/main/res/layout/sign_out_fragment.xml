@@ -49,6 +49,18 @@
         app:layout_constraintWidth_percent="1.0"
         tools:layout_editor_absoluteX="0dp">
         <Button
+            android:id="@+id/contract_show_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/contract_button_background"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            app:backgroundTint="@null"
+            android:elevation="20dp"
+            android:text="CONTRACT HISTORY"
+            android:layout_gravity="center" />
+        <Button
             android:id="@+id/sign_out_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

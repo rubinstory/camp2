@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.GridLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +36,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = SearchFragmentBinding.inflate(inflater, container, false)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
         getInfluencerListAndSetSearchAdapter()
         searchAdapter = SearchAdapter(this.requireContext())
         setSearchBarListener()
@@ -47,8 +49,8 @@ class SearchFragment : Fragment() {
         viewModel = ViewModelProvider(this, influencerViewModelFactory).get(InfluencerViewModel::class.java)
         viewModel.getInfluencers()
         viewModel.influencerList.observe(viewLifecycleOwner, Observer { influencerList ->
-//            influencers =
             searchAdapter.itemList = influencerList.toMutableList()
+            searchAdapter.filterList = influencerList.toMutableList()
             binding.searchResultView.adapter = searchAdapter
             binding.searchResultView.layoutManager = GridLayoutManager(context, 3)
         })
@@ -57,21 +59,12 @@ class SearchFragment : Fragment() {
 
 
     fun setSearchBarListener() {
-        binding.searchBar.addTextChangeListener(object: TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        binding.searchField.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { searchAdapter.filter.filter(p0) }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchAdapter.filter.filter(p0)
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-
+            override fun afterTextChanged(p0: Editable?) {}
         })
     }
-
-
 }

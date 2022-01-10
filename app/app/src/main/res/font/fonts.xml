@@ -4,4 +4,8 @@
         android:fontStyle="normal"
         android:fontWeight="100"
         android:font="@font/open_sans" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="100"
+        android:font="@font/receipt" />
 </font-family>
