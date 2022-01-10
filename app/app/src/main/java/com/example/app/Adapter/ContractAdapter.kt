@@ -36,8 +36,8 @@ class ContractAdapter(private var context: Context) : RecyclerView.Adapter<Contr
 
         fun bind(item: Contract) {
             hashValue.text = "2829-4525-3958-6739"
-            influencerName.text = item.influencer.getFullName()
-            contractorName.text = item.user.username
+//            influencerName.text = item.influencer.getFullName()
+//            contractorName.text = item.user.username
         }
 
         fun unbind() {

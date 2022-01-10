@@ -16,21 +16,21 @@ class ContractViewModel (private val repository: ContractRepository): ViewModel(
     var contractRepository: ContractRepository = ContractRepository()
     var contractList: MutableLiveData<List<Contract>> = MutableLiveData<List<Contract>>()
 
-    fun makeNewContract(newContract: Contract) {
-        viewModelScope.launch {
-            contractRepository.contract(newContract).enqueue(object: Callback<Contract> {
-                override fun onResponse(
-                    call: Call<Contract>,
-                    response: Response<Contract>) {
-                    if (response.isSuccessful){
-                    }
-                }
-                override fun onFailure(call: Call<Contract>, t: Throwable) {
-                }
-
-            })
-        }
-    }
+//    fun makeNewContract(newContract: Contract) {
+//        viewModelScope.launch {
+//            contractRepository.contract(newContract).enqueue(object: Callback<Contract> {
+//                override fun onResponse(
+//                    call: Call<Contract>,
+//                    response: Response<Contract>) {
+//                    if (response.isSuccessful){
+//                    }
+//                }
+//                override fun onFailure(call: Call<Contract>, t: Throwable) {
+//                }
+//
+//            })
+//        }
+//    }
 
     fun getContracts(){
         viewModelScope.launch{

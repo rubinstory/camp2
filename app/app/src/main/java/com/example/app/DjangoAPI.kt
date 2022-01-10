@@ -11,6 +11,7 @@ import okhttp3.MultipartBody
 import kotlin.collections.List
 import retrofit2.Call
 import retrofit2.http.*
+import java.io.ByteArrayOutputStream
 
 interface DjangoAPI {
 
@@ -49,8 +50,8 @@ interface DjangoAPI {
     @POST ("/contract/Contracts/")
     fun make_contract (
         @Part signatrue: MultipartBody.Part,
-        @Part ("influencer_id") influencer_id: Int,
-        @Part ("user_id") user_id: Int): Call<Contract>
+        @Part ("influencer") influencer_id: Int,
+        @Part ("user") user_id: Int): Call<Contract>
 
     @GET("/contract/Contracts")
     fun get_contracts(): Call<List<Contract>>
