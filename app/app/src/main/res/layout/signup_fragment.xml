@@ -23,130 +23,144 @@
             android:textSize="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign UP"
+            android:text="Sign Up"
             android:textStyle="bold"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/sign_in_view"
+    <ScrollView
+        android:id="@+id/signup_scroll_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintHeight_percent="0.7"
-        app:layout_constraintTop_toBottomOf="@+id/company_logo_view"
         app:layout_constraintWidth_percent="1.0"
-        tools:layout_editor_absoluteX="0dp">
-
-        <com.google.android.material.textfield.TextInputLayout
+        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintTop_toBottomOf="@+id/company_logo_view">
+        <LinearLayout
+            android:id="@+id/signup_scroll_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            style="@style/inputTextView"
-            app:helperText="Enter User Account">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/id_input_field"
+            app:layout_constraintTop_toTopOf="@+id/signup_scroll_view"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/sign_in_view"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_width="200dp"
-                android:hint="ID"
-                android:fontFamily="@font/open_sans"
-                android:maxLines="1"
-                android:textCursorDrawable="@drawable/black_cursor"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="@+id/signup_scroll_layout"
+                app:layout_constraintWidth_percent="1.0"
+                tools:layout_editor_absoluteX="0dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            style="@style/inputTextView"
-            android:layout_marginTop="20dp"
-            app:helperText="Enter User Name">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name_input_field"
-                android:layout_height="match_parent"
-                android:layout_width="200dp"
-                android:hint="NAME"
-                android:fontFamily="@font/open_sans"
-                android:maxLines="1"
-                android:textCursorDrawable="@drawable/black_cursor"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/inputTextView"
+                    app:helperText="Enter User Account">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/id_input_field"
+                        android:layout_height="match_parent"
+                        android:layout_width="200dp"
+                        android:hint="ID"
+                        android:fontFamily="@font/open_sans"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/black_cursor"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            style="@style/inputTextView"
-            app:helperText="Enter User Email">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/inputTextView"
+                    android:layout_marginTop="20dp"
+                    app:helperText="Enter User Name">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name_input_field"
+                        android:layout_height="match_parent"
+                        android:layout_width="200dp"
+                        android:hint="NAME"
+                        android:fontFamily="@font/open_sans"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/black_cursor"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_input_field"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_width="200dp"
-                android:hint="EMAIL"
-                android:fontFamily="@font/open_sans"
-                android:maxLines="1"
-                android:textCursorDrawable="@drawable/black_cursor"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/inputTextView"
+                    app:helperText="Enter User Email">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
-            style="@style/inputTextView"
-            app:helperText="Enter User Password">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/pw_input_field"
-                android:layout_height="match_parent"
-                android:layout_width="200dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:fontFamily="@font/open_sans"
-                android:textColor="@color/black"
-                android:maxLines="1"
-                android:textCursorDrawable="@drawable/black_cursor"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_input_field"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="200dp"
+                        android:hint="EMAIL"
+                        android:fontFamily="@font/open_sans"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/black_cursor"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
-            style="@style/inputTextView"
-            app:helperText="Enter Password Again">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/pw_check_input_field"
-                android:layout_height="match_parent"
-                android:layout_width="200dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:fontFamily="@font/open_sans"
-                android:textColor="@color/black"
-                android:maxLines="1"
-                android:textCursorDrawable="@drawable/black_cursor"/>
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
+                    style="@style/inputTextView"
+                    app:helperText="Enter User Password">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pw_input_field"
+                        android:layout_height="match_parent"
+                        android:layout_width="200dp"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:fontFamily="@font/open_sans"
+                        android:textColor="@color/black"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/black_cursor"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/button_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintHeight_percent="0.2"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_view"
-        app:layout_constraintWidth_percent="1.0"
-        tools:layout_editor_absoluteX="0dp">
-        <Button
-            android:id="@+id/sign_up_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/contract_button_background"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/black"
-            app:backgroundTint="@null"
-            android:elevation="20dp"
-            android:text="SIGNUP"
-            android:layout_gravity="center" />
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
+                    style="@style/inputTextView"
+                    app:helperText="Enter Password Again">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pw_check_input_field"
+                        android:layout_height="match_parent"
+                        android:layout_width="200dp"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:fontFamily="@font/open_sans"
+                        android:textColor="@color/black"
+                        android:maxLines="1"
+                        android:textCursorDrawable="@drawable/black_cursor"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintHeight_percent="0.2"
+                app:layout_constraintTop_toBottomOf="@+id/sign_in_view"
+                app:layout_constraintWidth_percent="1.0"
+                tools:layout_editor_absoluteX="0dp">
+                <Button
+                    android:id="@+id/sign_up_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/contract_button_background"
+                    android:fontFamily="@font/open_sans"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@null"
+                    android:elevation="20dp"
+                    android:text="SIGNUP"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
