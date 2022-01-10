@@ -128,11 +128,22 @@ class ModelDetailFragment : Fragment() {
 
     fun setContractButton() {
         binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
-            binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
 
-            setSignaturePad()
-            contractDecline()
-            contractAccept()
+            if(RetrofitInstance.TOKENUSERID == -1){
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                    .replace(R.id.fragment, SignInFragment())
+                    .commit()
+            }
+            else{
+                binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
+
+                setSignaturePad()
+                contractDecline()
+                contractAccept()
+            }
+
+
 
         })
     }

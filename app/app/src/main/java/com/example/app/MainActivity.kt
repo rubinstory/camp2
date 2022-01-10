@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 else -> {
+                    RetrofitInstance.TOKENUSERID = -1
                     binding.dropdownLoginBtn.setOnClickListener {
                         closeDropDownMenu()
                         supportFragmentManager.beginTransaction()
