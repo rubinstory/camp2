@@ -28,7 +28,7 @@ class SearchFragment : Fragment() {
 //
 //        val adapter = ArrayAdapter<>(R.layout.circle_img_view)
 
-
+        return binding.root
 
 
 
