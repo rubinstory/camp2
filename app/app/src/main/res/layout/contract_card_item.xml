@@ -6,14 +6,16 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="30dp"
+    android:background="@color/gray">
     <androidx.cardview.widget.CardView
         android:id="@+id/temp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="1.0"
         app:layout_constraintWidth_percent="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:elevation="20dp"
         app:cardElevation="20dp"
         app:cardCornerRadius="0dp">
@@ -133,24 +135,24 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="20dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="SIGNATURE"
                     android:textSize="10sp"
                     android:gravity="center_vertical"
-                    android:fontFamily="@font/receipt"
-                    android:layout_weight="2" />
+                    android:fontFamily="@font/receipt" />
 
                 <ImageView
                     android:id="@+id/signature_img"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
                     android:src="@drawable/sign"
-                    android:layout_weight="20"/>
+                    android:adjustViewBounds="true"/>
             </LinearLayout>
 
 
