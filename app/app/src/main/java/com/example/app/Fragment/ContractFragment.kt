@@ -21,10 +21,14 @@ import com.example.app.Influencer.InfluencerRepository
 import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
 import com.example.app.R
+import com.example.app.RetrofitInstance
+import com.example.app.User.UserRepository
+import com.example.app.User.UserViewModel
+import com.example.app.User.UserViewModelFactory
 import com.example.app.databinding.ContractFragmentBinding
 
 class ContractFragment: Fragment() {
-    private lateinit var viewModel: ContractViewModel
+    private lateinit var viewModel: UserViewModel
     private var _binding: ContractFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -43,11 +47,12 @@ class ContractFragment: Fragment() {
     }
 
     fun loadContracts() {
-        val repository = ContractRepository()
-        val contractViewModelFactory = ContractViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, contractViewModelFactory).get(ContractViewModel::class.java)
-        viewModel.contractList.observe(viewLifecycleOwner, Observer { contractList ->
-            contractAdapter.itemList = contractList.toMutableList()
+        val repository = UserRepository()
+        val userViewModelRepository = UserViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, userViewModelRepository).get(UserViewModel::class.java)
+        viewModel.getUserById(RetrofitInstance.TOKENUSERID)
+        viewModel.user.observe(viewLifecycleOwner, Observer { user ->
+            contractAdapter.itemList = user.contractList.toMutableList()
             binding.receiptViewpager.adapter = contractAdapter
         })
     }
