@@ -8,11 +8,11 @@ class ContractSerializer(serializers.ModelSerializer):
     # user = UserSerializer()
 
     signature = serializers.SerializerMethodField('get_image_url')
-     
+
     class Meta:
         model = Contract
         fields = '__all__'
 
     def get_image_url(self, obj):
-        return obj.image.url
+        return obj.signature.url
 
