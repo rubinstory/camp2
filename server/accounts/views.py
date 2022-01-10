@@ -25,5 +25,5 @@ def get_user_by_id(request, pk):
 
     else:
         if request.method == "GET":
-            s = UserSerializer(user)
+            s = UserSerializer(user, context={"request":request})
             return Response(s.data)
