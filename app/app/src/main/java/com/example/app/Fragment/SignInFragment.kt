@@ -23,20 +23,20 @@ import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
 import com.example.app.MainActivity
 import com.example.app.R
-import com.example.app.databinding.SigninFragmentBinding
+import com.example.app.databinding.SignInFragmentBinding
 import com.kakao.sdk.user.UserApiClient
 
 class SignInFragment : Fragment() {
     private lateinit var viewModel: AuthenticationViewModel
 
-    private var _binding: SigninFragmentBinding? = null
+    private var _binding: SignInFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = SigninFragmentBinding.inflate(inflater, container, false)
+        _binding = SignInFragmentBinding.inflate(inflater, container, false)
         setLoginAndSignupBtn()
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
         return binding.root
