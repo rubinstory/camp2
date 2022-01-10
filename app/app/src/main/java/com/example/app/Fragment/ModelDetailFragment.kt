@@ -1,37 +1,48 @@
 package com.example.app.Fragment
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.TableLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.drawToBitmap
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.app.Adapter.ImageAdapter
 import com.example.app.Adapter.VideoAdapter
+import com.example.app.Contract.Contract
+import com.example.app.Contract.ContractRepository
+import com.example.app.Contract.ContractViewModel
+import com.example.app.Contract.ContractViewModelFactory
 import com.example.app.Influencer.Influencer
 import com.example.app.Influencer.InfluencerRepository
 import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
 import com.example.app.R
+import com.example.app.RetrofitInstance
 import com.example.app.databinding.ModelDetailFragmentBinding
 import com.github.gcacace.signaturepad.views.SignaturePad
-import com.github.gcacace.signaturepad.views.SignaturePad.OnSignedListener
 import com.google.android.material.tabs.TabLayout
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
+import android.os.Environment
+import java.io.*
+import android.provider.MediaStore
+
+import android.content.ContentUris
+import android.content.Context
+import android.database.Cursor
+
 
 class ModelDetailFragment : Fragment() {
     private lateinit var imageAdapter: ImageAdapter
     private lateinit var videoAdapter: VideoAdapter
     private lateinit var viewModel: InfluencerViewModel
+    private lateinit var contractviewModel: ContractViewModel
     private var influencerId: Int = 1
 
     lateinit var influencer: Influencer
@@ -147,12 +158,27 @@ class ModelDetailFragment : Fragment() {
 
     fun contractAccept() {
         binding.signaturepanel.contractTwoButtonBar.accpetBtn.setOnClickListener(View.OnClickListener {
-            val signaturefile: Bitmap =
-                binding.signaturepanel.signaturePad.getTransparentSignatureBitmap()
+//            val signaturebyte: ByteArray ? = bitmapToByteArray(binding.signaturepanel.signaturePad.getTransparentSignatureBitmap())
+            val signaturefile: Bitmap = binding.signaturepanel.signaturePad.getSignatureBitmap()
             binding.signaturepanel.signaturePad.clear()
             binding.signaturepanel.signatureText.visibility = View.VISIBLE
             binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED)
-            //TODO: signature 이미지 올리기 ..??!!
+
+
+//            println("SignatureFile"+signaturebyte)
+//            val signaturefile = encodeToString(signaturebyte, NO_WRAP)
+            println("signaturefile" + signaturefile)
+
+            saveBitmaptoJpeg(signaturefile, "DCIM/Camera", "signaturefile")
+
+//            val uri: Uri? = path2uri(requireContext(), "/storage/emulated/0/DCIM/Camera/signaturefile")
+//                Uri.parse("file:/" + Environment.getExternalStorageDirectory() +"/DCIM/Camera/signaturefile")
+            val repository = ContractRepository()
+            val contractViewModelFactory = ContractViewModelFactory(repository)
+            contractviewModel = ViewModelProvider(this, contractViewModelFactory).get(ContractViewModel::class.java)
+            contractviewModel.makeNewContract(
+                Contract(signaturefile.toString(), influencerId, RetrofitInstance.TOKENUSERID)
+            )
             Toast.makeText(requireActivity(), "거래가 완료되었습니다.", Toast.LENGTH_SHORT).show()
         })
     }
@@ -178,4 +204,25 @@ class ModelDetailFragment : Fragment() {
         })
 
     }
+
+    fun saveBitmaptoJpeg(bitmap: Bitmap, folder: String, name: String) {
+        val ex_storage = Environment.getExternalStorageDirectory().absolutePath
+        // Get Absolute Path in External Sdcard
+        val foler_name = "/$folder/"
+        val file_name = "$name.jpg"
+        val string_path = ex_storage + foler_name
+        val file_path: File
+        println(string_path)
+        try {
+            file_path = File(string_path)
+            if (!file_path.isDirectory()) {
+            }
+            val out = FileOutputStream(string_path + file_name)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+            out.close()
+        } catch (exception: FileNotFoundException) {
+        } catch (exception: IOException) {
+        }
+    }
 }
+

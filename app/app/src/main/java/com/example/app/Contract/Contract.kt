@@ -1,12 +1,10 @@
 package com.example.app.Contract
 
-import com.example.app.Influencer.Influencer
-import com.example.app.User.User
+import android.net.Uri
 import com.google.gson.annotations.SerializedName
 
-data class Contract (
-    @SerializedName("id") val id: Int,
-    @SerializedName("signature") val url: String,
-    @SerializedName("influencer") var influencer: Influencer,
-    @SerializedName("user" ) var user: User
+data class Contract(
+    @SerializedName("signature") val signature: String,
+    @SerializedName("influencer") val influencer_id: Int,
+    @SerializedName("user" ) val user_id: Int
 )

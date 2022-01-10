@@ -2,10 +2,12 @@ package com.example.app
 
 import com.example.app.Influencer.Influencer
 import com.example.app.Authentication.Authentication
+import com.example.app.Contract.Contract
 import com.example.app.Register.Register
 import com.example.app.Token.Token
 import com.example.app.User.User
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 import kotlin.collections.List
 import retrofit2.Call
 import retrofit2.http.*
@@ -40,8 +42,18 @@ interface DjangoAPI {
     @GET("/accounts/")
     fun get_users(): Call<List<User>>
 
-    @GET("/accounts/{id}")
+    @GET("/accounts/users/{id}")
     fun get_user_by_pk(@Path("id") id: Int): Call<User>
+
+    @Multipart
+    @POST ("/contract/Contracts/")
+    fun make_contract (
+        @Part signatrue: MultipartBody.Part,
+        @Part ("influencer_id") influencer_id: Int,
+        @Part ("user_id") user_id: Int): Call<Contract>
+
+    @GET("/contract/Contracts")
+    fun get_contracts(): Call<List<Contract>>
 
 
 }
