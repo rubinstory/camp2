@@ -59,17 +59,11 @@ class MainFragment : Fragment() {
     }
 
     fun setAnimation() {
-        var animation1 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-        animation1.duration = 1000
+        var animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        animation.duration = 1000
 
-        var animation2 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-        animation2.duration = 1500
-        var animation3 = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-        animation3.duration = 2000
-
-        binding.titleTextView.startAnimation(animation2)
-        binding.descriptionTextView.startAnimation(animation3)
-        binding.modelProfileViewpager.startAnimation(animation1)
+        binding.modelProfileViewpager.startAnimation(animation)
+        titleAndDescriptionAnimationSlideFromBottom()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,9 +83,7 @@ class MainFragment : Fragment() {
                 else if (lastPosition > position) {
                     titleAndDescriptionAnimationSlideFromTop()
                 }
-                else {
-//                    titleAndDescriptionAnimationFadeIn()
-                }
+                else { }
                 lastPosition = position
             }
         })

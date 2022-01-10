@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
     fun initMenuButton() {
         binding.dropdownMenuBtn.setOnClickListener{
             when(binding.dropdownLoginBtn.visibility) {
-                FloatingActionButton.INVISIBLE -> openDropDownMenu()
+                FloatingActionButton.GONE -> openDropDownMenu()
                 FloatingActionButton.VISIBLE -> closeDropDownMenu()
             }
         }
@@ -160,15 +160,17 @@ class MainActivity : AppCompatActivity() {
         binding.dropdownHomeButton
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_from_top))
         binding.dropdownHomeButton.visibility = FloatingActionButton.VISIBLE;
+        binding.dropdownHomeButton.isClickable = true
 
         binding.dropdownLoginBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_from_top))
         binding.dropdownLoginBtn.visibility = FloatingActionButton.VISIBLE;
+        binding.dropdownLoginBtn.isClickable = true
 
         binding.dropdownSearchBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_from_top))
         binding.dropdownSearchBtn.visibility = FloatingActionButton.VISIBLE;
-
+        binding.dropdownSearchBtn.isClickable = true
     }
 
     fun closeDropDownMenu() {
@@ -177,14 +179,17 @@ class MainActivity : AppCompatActivity() {
 
         binding.dropdownHomeButton
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_to_top))
-        binding.dropdownHomeButton.visibility = FloatingActionButton.INVISIBLE;
+        binding.dropdownHomeButton.visibility = FloatingActionButton.GONE;
+        binding.dropdownHomeButton.isClickable = false
 
         binding.dropdownLoginBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_to_top))
-        binding.dropdownLoginBtn.visibility = FloatingActionButton.INVISIBLE;
+        binding.dropdownLoginBtn.visibility = FloatingActionButton.GONE;
+        binding.dropdownLoginBtn.isClickable = false
 
         binding.dropdownSearchBtn
             .startAnimation(AnimationUtils.loadAnimation(this, R.anim.dropdown_to_top))
-        binding.dropdownSearchBtn.visibility = FloatingActionButton.INVISIBLE;
+        binding.dropdownSearchBtn.visibility = FloatingActionButton.GONE;
+        binding.dropdownSearchBtn.isClickable = false
     }
 }

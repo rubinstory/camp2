@@ -29,7 +29,7 @@
         android:layout_marginLeft="20dp"
         app:fabSize="mini"
         android:src="@drawable/home"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:backgroundTint="@color/white"
         app:tint="@color/black"/>
 
@@ -44,7 +44,7 @@
         app:fabSize="mini"
         android:elevation="10dp"
         android:src="@drawable/enter"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:backgroundTint="@color/white"
         app:tint="@color/black"/>
 
@@ -58,7 +58,7 @@
         android:layout_marginLeft="20dp"
         app:fabSize="mini"
         android:src="@drawable/search"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:backgroundTint="@color/white"
         app:tint="@color/black"/>
 

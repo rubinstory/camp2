@@ -49,6 +49,10 @@ class SignUpFragment : Fragment() {
     fun initSignUpButton() {
         binding.signUpBtn.setOnClickListener {
             signUp()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .replace(R.id.fragment, SignInFragment())
+                .commitAllowingStateLoss()
         }
     }
 
