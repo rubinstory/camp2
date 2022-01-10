@@ -80,7 +80,9 @@ class SignInFragment : Fragment() {
                             .replace(R.id.fragment, MainFragment())
                             .commitAllowingStateLoss()
                     }
-                    401 -> {
+                    else -> {
+                        binding.idInputLayout.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
+                        binding.pwInputLayout.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in))
                         binding.idInputLayout.error = "Please check ID or Password"
                         binding.pwInputLayout.error = "Please check ID or Password"
                     }

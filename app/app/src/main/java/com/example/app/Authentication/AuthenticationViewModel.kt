@@ -26,11 +26,12 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
                         val token = response.body()!!
                         RetrofitInstance.ACCESS_TOKEN = token.access_token
                         RetrofitInstance.REFRESH_TOKEN = token.refresh_token
-                        HTTP_STATUS.postValue(response.code())
                     }
+                    HTTP_STATUS.postValue(response.code())
                 }
                 override fun onFailure(call: Call<Token>, t: Throwable) {
                     Log.e("LOGIN", t.message.toString())
+                    HTTP_STATUS.postValue(-1)
                 }
             })
         }
