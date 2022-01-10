@@ -14,5 +14,6 @@ class ContractSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_image_url(self, obj):
-        return obj.signature.url
+        request = self.context.get("request")
+        return request.build_absolute_uri(obj.signature.url)
 
