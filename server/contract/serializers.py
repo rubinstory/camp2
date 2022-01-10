@@ -7,6 +7,8 @@ class ContractSerializer(serializers.ModelSerializer):
     # influencer = InfluencerSerializer()
     # user = UserSerializer()
 
+    signature = serializers.SerializerMethodField('get_image_url')
+     
     class Meta:
         model = Contract
         fields = '__all__'
