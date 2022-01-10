@@ -23,6 +23,7 @@ import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
 import com.example.app.MainActivity
 import com.example.app.R
+import com.example.app.RetrofitInstance
 import com.example.app.databinding.SignInFragmentBinding
 import com.kakao.sdk.user.UserApiClient
 

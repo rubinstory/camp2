@@ -56,5 +56,4 @@ interface DjangoAPI {
     @GET("/contract/Contracts")
     fun get_contracts(): Call<List<Contract>>
 
-
 }

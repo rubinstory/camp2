@@ -29,6 +29,7 @@ import com.example.app.databinding.ContractFragmentBinding
 
 class ContractFragment: Fragment() {
     private lateinit var viewModel: UserViewModel
+    private lateinit var contractviewModel: ContractViewModel
     private var _binding: ContractFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -49,11 +50,28 @@ class ContractFragment: Fragment() {
     fun loadContracts() {
         val repository = UserRepository()
         val userViewModelRepository = UserViewModelFactory(repository)
+
         viewModel = ViewModelProvider(this, userViewModelRepository).get(UserViewModel::class.java)
         viewModel.getUserById(RetrofitInstance.TOKENUSERID)
         viewModel.user.observe(viewLifecycleOwner, Observer { user ->
-            contractAdapter.itemList = user.contractList.toMutableList()
-            binding.receiptViewpager.adapter = contractAdapter
+
+            if(user.is_admin){
+                val contractRepository = ContractRepository()
+                val contractViewModelRepository = ContractViewModelFactory(contractRepository)
+
+                contractviewModel = ViewModelProvider(this, contractViewModelRepository).get(ContractViewModel::class.java)
+                contractviewModel.getContracts()
+                contractviewModel.contractList.observe(viewLifecycleOwner, Observer { contractList ->
+                    println("ContractList: "+contractList)
+                    contractAdapter.itemList = contractList.toMutableList()
+                    binding.receiptViewpager.adapter = contractAdapter
+                })
+
+            }
+            else {
+                contractAdapter.itemList = user.contractList.toMutableList()
+                binding.receiptViewpager.adapter = contractAdapter
+            }
         })
     }
 }
