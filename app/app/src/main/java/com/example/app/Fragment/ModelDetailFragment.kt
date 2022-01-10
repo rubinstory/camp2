@@ -130,6 +130,8 @@ class ModelDetailFragment : Fragment() {
         binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
 
             if(RetrofitInstance.TOKENUSERID == -1){
+                println("TOKENUSERID: " + RetrofitInstance.TOKENUSERID)
+                println("flag3")
                 requireActivity().supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                     .replace(R.id.fragment, SignInFragment())
