@@ -30,9 +30,10 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
                         RetrofitInstance.TOKENUSERID = token.user.id
                         HTTP_STATUS.postValue(response.code())
                     }
-                }
+
                 override fun onFailure(call: Call<Token>, t: Throwable) {
                     Log.e("LOGIN", t.message.toString())
+                    HTTP_STATUS.postValue(-1)
                 }
             })
         }

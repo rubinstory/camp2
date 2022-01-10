@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_background_white"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/orange"
+            android:textColor="@color/black"
             app:backgroundTint="@null"
             android:elevation="50dp"
             android:text="Decline"

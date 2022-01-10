@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -43,7 +44,7 @@ class InfluencerAdapter(private val context: Context): RecyclerView.Adapter<Infl
         private val profileImg: ImageView = binding.mainFragmentModelProfileImg
         private val profileName: TextView = binding.mainFragmentModelProfileName
         private val profileDescription: TextView = binding.mainFragmentModelProfileDescription
-        private val profileCard: ConstraintLayout = binding.modelProfileItem
+        private val profileCard: CardView = binding.modelProfileCardView
 
 
         fun bind(item: Influencer) {
