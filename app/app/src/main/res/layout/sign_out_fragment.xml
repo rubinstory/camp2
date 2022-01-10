@@ -28,6 +28,7 @@
                 layout="@layout/circle_img_view"/>
         </LinearLayout>
         <TextView
+            android:id="@+id/sign_out_user_name"
             style="@style/ModelProfileNameTextView"
             android:textSize="25dp"
             android:layout_width="wrap_content"

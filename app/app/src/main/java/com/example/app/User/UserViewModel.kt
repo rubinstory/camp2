@@ -12,6 +12,7 @@ import retrofit2.Response
 class UserViewModel(private val repository: UserRepository): ViewModel() {
     var userRepository: UserRepository = UserRepository()
     var userList: MutableLiveData<List<User>> = MutableLiveData<List<User>>()
+    var user: MutableLiveData<User> = MutableLiveData<User>()
 
 
     fun getUsers(){
@@ -40,7 +41,7 @@ class UserViewModel(private val repository: UserRepository): ViewModel() {
             userRepository.getUserById(id).enqueue(object: Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if (response.isSuccessful) {
-                        userList.postValue(listOf(response.body()!!))
+                        user.postValue(response.body())
                     }
                 }
                 override fun onFailure(call: Call<User>, t: Throwable) {
