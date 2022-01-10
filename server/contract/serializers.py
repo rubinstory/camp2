@@ -7,13 +7,13 @@ class ContractSerializer(serializers.ModelSerializer):
     # influencer = InfluencerSerializer()
     # user = UserSerializer()
 
-    signature = serializers.SerializerMethodField('get_image_url')
+    # signature = serializers.SerializerMethodField('get_image_url')
 
     class Meta:
         model = Contract
         fields = '__all__'
 
-    def get_image_url(self, obj):
-        request = self.context.get("request")
-        return request.build_absolute_uri(obj.signature.url)
+    # def get_image_url(self, obj):
+    #     request = self.context.get("request")
+    #     return request.build_absolute_uri(obj.signature.url)
 

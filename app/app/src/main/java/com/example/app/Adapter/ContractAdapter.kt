@@ -62,7 +62,7 @@ class ContractAdapter(private var context: Context) : RecyclerView.Adapter<Contr
                 contractorName.text = user.username
             })
 
-            Glide.with(context).load(item.signature).into(signatureImg)
+            Glide.with(context).load(RetrofitInstance.BASE_URL + "/" + item.signature).into(signatureImg)
         }
     }
 
