@@ -34,8 +34,22 @@ import java.io.*
 import android.provider.MediaStore
 
 import android.content.ContentUris
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.database.Cursor
+import android.util.Log
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.Request
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.http.Header
+import android.graphics.BitmapFactory
+
+
+
 
 
 class ModelDetailFragment : Fragment() {
@@ -158,32 +172,31 @@ class ModelDetailFragment : Fragment() {
 
     fun contractAccept() {
         binding.signaturepanel.contractTwoButtonBar.accpetBtn.setOnClickListener(View.OnClickListener {
-//            val signaturebyte: ByteArray ? = bitmapToByteArray(binding.signaturepanel.signaturePad.getTransparentSignatureBitmap())
             val signaturefile: Bitmap = binding.signaturepanel.signaturePad.getSignatureBitmap()
             binding.signaturepanel.signaturePad.clear()
             binding.signaturepanel.signatureText.visibility = View.VISIBLE
             binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED)
 
-
-//            println("SignatureFile"+signaturebyte)
-//            val signaturefile = encodeToString(signaturebyte, NO_WRAP)
-            println("signaturefile" + signaturefile)
-
-            saveBitmaptoJpeg(signaturefile, "DCIM/Camera", "signaturefile")
-
-//            val uri: Uri? = path2uri(requireContext(), "/storage/emulated/0/DCIM/Camera/signaturefile")
-//                Uri.parse("file:/" + Environment.getExternalStorageDirectory() +"/DCIM/Camera/signaturefile")
             val repository = ContractRepository()
             val contractViewModelFactory = ContractViewModelFactory(repository)
             contractviewModel = ViewModelProvider(this, contractViewModelFactory).get(ContractViewModel::class.java)
-            contractviewModel.makeNewContract(
-                Contract(signaturefile.toString(), influencerId, RetrofitInstance.TOKENUSERID)
-            )
-            Toast.makeText(requireActivity(), "거래가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            signaturefile.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
+            val requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), byteArrayOutputStream.toByteArray())
+            val uploadFile = MultipartBody.Part.createFormData("signature", "something.jpeg", requestBody)
+
+            RetrofitInstance.api.make_contract(signatrue = uploadFile, influencerId, RetrofitInstance.TOKENUSERID).enqueue(object: Callback<Contract> {
+                override fun onResponse(call: Call<Contract>, response: Response<Contract>) {
+                    val headers = response.headers()
+                    Log.d("TAG", headers.toString())
+                    Toast.makeText(requireActivity(), "거래가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onFailure(call: Call<Contract>, t: Throwable) {}
+            })
         })
     }
-
-
 
     fun initViewModel() {
         val repository = InfluencerRepository()
@@ -202,27 +215,6 @@ class ModelDetailFragment : Fragment() {
             videoAdapter.itemList = influencer.videoList.toMutableList()
             binding.modelDetailViewpager.adapter = imageAdapter
         })
-
-    }
-
-    fun saveBitmaptoJpeg(bitmap: Bitmap, folder: String, name: String) {
-        val ex_storage = Environment.getExternalStorageDirectory().absolutePath
-        // Get Absolute Path in External Sdcard
-        val foler_name = "/$folder/"
-        val file_name = "$name.jpg"
-        val string_path = ex_storage + foler_name
-        val file_path: File
-        println(string_path)
-        try {
-            file_path = File(string_path)
-            if (!file_path.isDirectory()) {
-            }
-            val out = FileOutputStream(string_path + file_name)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-            out.close()
-        } catch (exception: FileNotFoundException) {
-        } catch (exception: IOException) {
-        }
     }
 }
 
