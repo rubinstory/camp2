@@ -54,7 +54,6 @@ class ContractFragment: Fragment() {
                 contractviewModel = ViewModelProvider(this, contractViewModelRepository).get(ContractViewModel::class.java)
                 contractviewModel.getContracts()
                 contractviewModel.contractList.observe(viewLifecycleOwner, Observer { contractList ->
-                    println("ContractList: "+contractList)
                     contractAdapter.itemList = contractList.toMutableList()
                     binding.receiptViewpager.adapter = contractAdapter
                 })

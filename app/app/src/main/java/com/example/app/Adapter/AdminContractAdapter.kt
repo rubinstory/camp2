@@ -27,6 +27,7 @@ import com.example.app.databinding.ContractCardItemBinding
 class AdminContractAdapter(private var context: Context, private var influencer: Influencer) : RecyclerView.Adapter<AdminContractAdapter.ViewHolder>() {
     private lateinit var userViewModel: UserViewModel
     private lateinit var influencerViewModel: InfluencerViewModel
+    private var i : Int = 0
 
     private lateinit var viewPagerBinding: ContractCardItemBinding
     var itemList = mutableListOf<Contract>()
@@ -47,24 +48,25 @@ class AdminContractAdapter(private var context: Context, private var influencer:
         private val signatureImg: ImageView = binding.signatureImg
 
         fun bind(item: Contract) {
+
             hashValue.text = item.id.toString()
 
             influencerName.text = influencer.getFullName()
 
-            contractorName.text = influencer.contractList[item.id-1].user_id.toString()
-
-//            val repository2 = UserRepository()
-//            val userViewModelRepository = UserViewModelFactory(repository2)
-//            userViewModel = ViewModelProvider((context as MainActivity).viewModelStore, userViewModelRepository).get(UserViewModel::class.java)
-//            userViewModel.getUserById(influencer.contractList[item.id].user_id)
-//            userViewModel.user.observe((context as MainActivity), Observer { user ->
-//                println("USERINFO: " + user)
-//                println("USERNAME: " + user.username)
-//                contractorName.text = user.username
-//            })
+//            contractorName.text = influencer.contractList[i].user_id.toString()
 
             Glide.with((context) as MainActivity).load(item.signature).into(signatureImg)
             Log.d("SIGNATURE_IMG", item.signature)
+
+            var repository =  UserRepository()
+            var userViewModelFactory = UserViewModelFactory(repository)
+            userViewModel = ViewModelProvider((context as MainActivity), userViewModelFactory).get(UserViewModel::class.java)
+            userViewModel.getUserById(influencer.contractList[i].user_id)
+            userViewModel.user.observe((context as MainActivity), Observer { user ->
+                contractorName.text = user.username
+            })
+
+            i ++
         }
     }
 
