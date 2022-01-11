@@ -135,11 +135,28 @@ class ModelDetailFragment : Fragment() {
     }
 
     fun setContractButtonToContract() {
+
         binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
-            binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
-            setSignaturePad()
-            contractDecline()
-            contractAccept()
+            if(RetrofitInstance.USER_ID == 1){
+                var bundle: Bundle = Bundle()
+                bundle.putInt("influencerId", influencerId)
+
+                var AdminContractFragment = AdminContractFragment()
+                AdminContractFragment.arguments = bundle
+
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                    ?.replace(R.id.fragment, AdminContractFragment)
+                    ?.commitAllowingStateLoss()
+
+
+            }
+            else {
+                binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
+                setSignaturePad()
+                contractDecline()
+                contractAccept()
+            }
         })
     }
 

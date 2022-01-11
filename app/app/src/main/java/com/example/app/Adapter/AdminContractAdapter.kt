@@ -11,17 +11,20 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.app.Contract.Contract
+import com.example.app.Fragment.ContractFragment
 import com.example.app.Influencer.Influencer
 import com.example.app.Influencer.InfluencerRepository
 import com.example.app.Influencer.InfluencerViewModel
 import com.example.app.Influencer.InfluencerViewModelFactory
 import com.example.app.MainActivity
+import com.example.app.Portfolio.Image
+import com.example.app.RetrofitInstance
 import com.example.app.User.UserRepository
 import com.example.app.User.UserViewModel
 import com.example.app.User.UserViewModelFactory
 import com.example.app.databinding.ContractCardItemBinding
 
-class ContractAdapter(private var context: Context) : RecyclerView.Adapter<ContractAdapter.ViewHolder>() {
+class AdminContractAdapter(private var context: Context, private var influencer: Influencer) : RecyclerView.Adapter<AdminContractAdapter.ViewHolder>() {
     private lateinit var userViewModel: UserViewModel
     private lateinit var influencerViewModel: InfluencerViewModel
 
@@ -46,28 +49,28 @@ class ContractAdapter(private var context: Context) : RecyclerView.Adapter<Contr
         fun bind(item: Contract) {
             hashValue.text = item.id.toString()
 
-            val repository = InfluencerRepository()
-            val influencerViewModelRepository = InfluencerViewModelFactory(repository)
-            influencerViewModel = ViewModelProvider((context as MainActivity).viewModelStore, influencerViewModelRepository).get(InfluencerViewModel::class.java)
-            influencerViewModel.getInfluencerById(item.influencer_id)
-            influencerViewModel.influencerList.observe((context as MainActivity), Observer { influencerList ->
-                influencerName.text = influencerList[0].getFullName()
-            })
+            influencerName.text = influencer.getFullName()
 
-            val repository2 = UserRepository()
-            val userViewModelRepository = UserViewModelFactory(repository2)
-            userViewModel = ViewModelProvider((context as MainActivity).viewModelStore, userViewModelRepository).get(UserViewModel::class.java)
-            userViewModel.getUserById(item.user_id)
-            userViewModel.user.observe((context as MainActivity), Observer { user ->
-                contractorName.text = user.username
-            })
+            contractorName.text = influencer.contractList[item.id-1].user_id
+
+//            val repository2 = UserRepository()
+//            val userViewModelRepository = UserViewModelFactory(repository2)
+//            userViewModel = ViewModelProvider((context as MainActivity).viewModelStore, userViewModelRepository).get(UserViewModel::class.java)
+//            userViewModel.getUserById(influencer.contractList[item.id].user_id)
+//            userViewModel.user.observe((context as MainActivity), Observer { user ->
+//                println("USERINFO: " + user)
+//                println("USERNAME: " + user.username)
+//                contractorName.text = user.username
+//            })
 
             Glide.with((context) as MainActivity).load(item.signature).into(signatureImg)
             Log.d("SIGNATURE_IMG", item.signature)
         }
     }
 
-    fun getInfluencer(id: Int) {
 
-    }
+//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+//        TODO("Not yet implemented")
+//    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.app.Influencer
 
+import com.example.app.Contract.Contract
 import com.example.app.Image.Video
 import com.example.app.Portfolio.Image
 import com.google.gson.annotations.SerializedName
@@ -15,7 +16,7 @@ data class Influencer (
     @SerializedName("description") val description: String,
     @SerializedName("image") val imageList: List<Image>,
     @SerializedName("video") val videoList: List<Video>,
-
+    @SerializedName("contract") val contractList: List<Contract>
 
 ) {
     fun getFullName(): String = last_name + " " + first_name
