@@ -1,14 +1,17 @@
 package com.example.app.Fragment
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.app.MainActivity
 import com.example.app.R
 import com.example.app.Register.Register
 import com.example.app.Register.RegisterRepository
@@ -16,6 +19,7 @@ import com.example.app.Register.RegisterViewModel
 import com.example.app.Register.RegisterViewModelFactory
 import com.example.app.RetrofitInstance
 import com.example.app.databinding.SignUpFragmentBinding
+import com.example.madcamp_1st_week.UserAddDialog
 
 class SignUpFragment : Fragment() {
     private lateinit var viewModel: RegisterViewModel
@@ -48,11 +52,20 @@ class SignUpFragment : Fragment() {
 
     fun initSignUpButton() {
         binding.signUpBtn.setOnClickListener {
+            (context as MainActivity).currentFocus?.let { view ->
+                val inputMethodManager = (context as MainActivity).getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            }
             signUp()
             requireActivity().supportFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 .replace(R.id.fragment, SignInFragment())
                 .commitAllowingStateLoss()
+            val dialog = UserAddDialog(this.requireContext())
+            dialog.setOnOKClickedListener {
+
+            }
+            dialog.start("dfs")
         }
     }
 

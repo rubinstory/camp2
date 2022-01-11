@@ -31,9 +31,9 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
                         RetrofitInstance.REFRESH_TOKEN = token.refresh_token
                         RetrofitInstance.USER_ID = token.user.id
                         USER.postValue(token.user)
-                        HTTP_STATUS.postValue(response.code())
                         Log.d("RESULT", RetrofitInstance.USER_ID.toString())
                     }
+                    HTTP_STATUS.postValue(response.code())
                 }
 
                 override fun onFailure(call: Call<Token>, t: Throwable) {

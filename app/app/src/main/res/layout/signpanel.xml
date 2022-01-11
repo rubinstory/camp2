@@ -40,7 +40,7 @@
             android:fontFamily="@font/open_sans"
             android:paddingLeft="5dp"
             android:background="@drawable/bottomline"
-            android:text="Agency Name"
+            android:text="CATENA"
             android:textColor="#AEAEAE"
             android:textSize="9dp"
             android:textStyle="bold" />

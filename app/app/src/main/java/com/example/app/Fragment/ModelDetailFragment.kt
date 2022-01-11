@@ -50,6 +50,9 @@ import android.graphics.BitmapFactory
 import com.example.app.Authentication.AuthenticationRepository
 import com.example.app.Authentication.AuthenticationViewModel
 import com.example.app.Authentication.AuthenticationViewModelFactory
+import com.example.madcamp_1st_week.ContractDialog
+import com.example.madcamp_1st_week.GoToLoginDialog
+import com.example.madcamp_1st_week.UserAddDialog
 
 
 class ModelDetailFragment : Fragment() {
@@ -148,10 +151,14 @@ class ModelDetailFragment : Fragment() {
         binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
             println("TOKENUSERID: " + RetrofitInstance.USER_ID)
             println("flag3")
-            requireActivity().supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                .replace(R.id.fragment, SignInFragment())
-                .commit()
+            val dialog = GoToLoginDialog(this.requireContext())
+            dialog.setOnOKClickedListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                    .replace(R.id.fragment, SignInFragment())
+                    .commit()
+            }
+            dialog.start("dfs")
         })
     }
 
@@ -199,9 +206,13 @@ class ModelDetailFragment : Fragment() {
 
             RetrofitInstance.api.make_contract(signatrue = uploadFile, influencerId, RetrofitInstance.USER_ID).enqueue(object: Callback<Contract> {
                 override fun onResponse(call: Call<Contract>, response: Response<Contract>) {
-                    val headers = response.headers()
-                    Log.d("TAG", headers.toString())
-                    Toast.makeText(requireActivity(), "거래가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+//                    val headers = response.headers()
+//                    Log.d("TAG", headers.toString())
+//                    Toast.makeText(requireActivity(), "거래가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                    val dialog = ContractDialog(requireContext())
+                    dialog.setOnOKClickedListener {
+                    }
+                    dialog.start("dfs")
                 }
 
                 override fun onFailure(call: Call<Contract>, t: Throwable) {}
