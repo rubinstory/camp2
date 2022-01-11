@@ -24,6 +24,7 @@ class VideoPortfolioSerializer(serializers.ModelSerializer):
 class InfluencerSerializer(serializers.ModelSerializer):
     video = VideoPortfolioSerializer(many = True)
     image = ImagePortfolioSerializer(many = True)
+    contract = ContractSerializer(many = True)
     class Meta:
         model = Influencer
         fields = ['id', 'first_name', 'last_name', 'age', 'height', 'weight', 'country', 'description', 'producer', 'image', 'video', 'contract',]
