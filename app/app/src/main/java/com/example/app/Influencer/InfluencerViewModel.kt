@@ -13,6 +13,8 @@ import retrofit2.Response
 class InfluencerViewModel(private val repository: InfluencerRepository): ViewModel() {
     var influencerRepository: InfluencerRepository = InfluencerRepository()
     var influencerList: MutableLiveData<List<Influencer>> = MutableLiveData<List<Influencer>>()
+    var influencer: MutableLiveData<Influencer> = MutableLiveData<Influencer>()
+
 
     fun getInfluencers() {
         viewModelScope.launch {
@@ -23,6 +25,7 @@ class InfluencerViewModel(private val repository: InfluencerRepository): ViewMod
                ) {
                    if (response.isSuccessful) {
                        influencerList.postValue(response.body())
+
                    }
                }
 
@@ -41,6 +44,7 @@ class InfluencerViewModel(private val repository: InfluencerRepository): ViewMod
                 override fun onResponse(call: Call<Influencer>, response: Response<Influencer>) {
                     if (response.isSuccessful) {
                         influencerList.postValue(listOf(response.body()!!))
+                        influencer.postValue(response.body())
                     }
                 }
 
