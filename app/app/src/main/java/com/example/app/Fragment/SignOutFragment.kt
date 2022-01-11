@@ -23,6 +23,7 @@ import com.example.app.User.UserViewModel
 import com.example.app.User.UserViewModelFactory
 import com.example.app.databinding.SignOutFragmentBinding
 import kotlinx.coroutines.*
+import retrofit2.await
 
 class SignOutFragment: Fragment() {
     private lateinit var userViewModel: UserViewModel
@@ -58,10 +59,6 @@ class SignOutFragment: Fragment() {
         val userFactory = UserViewModelFactory(repository)
         userViewModel = ViewModelProvider(this, userFactory).get(UserViewModel::class.java)
         userViewModel.getUserById(RetrofitInstance.USER_ID)
-//        userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
-//            binding.signOutUserName.text = user.username
-//            Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)
-//        })
         userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
             binding.signOutUserName.text = user.username
             Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)

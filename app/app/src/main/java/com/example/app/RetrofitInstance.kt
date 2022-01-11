@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    val BASE_URL:String = "http://192.249.18.187:80"
+    val BASE_URL:String = "http://192.249.18.201:80"
     var ACCESS_TOKEN: String = ""
     var REFRESH_TOKEN: String = ""
     var USER_ID: Int = -1

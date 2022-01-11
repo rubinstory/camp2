@@ -49,7 +49,6 @@ class AdminContractFragment: Fragment() {
         viewModel.getInfluencerById(influencerId)
         viewModel.influencer.observe(viewLifecycleOwner, Observer { influencer ->
             admincontractAdapter = AdminContractAdapter(this.requireContext(), influencer)
-            println("SIZEEE"+influencer.contractList.size)
             admincontractAdapter.itemList = influencer.contractList.toMutableList()
             binding.receiptViewpager.adapter = admincontractAdapter
         })
