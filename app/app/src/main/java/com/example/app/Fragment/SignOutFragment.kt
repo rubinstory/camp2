@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RestrictTo
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,12 +15,14 @@ import com.example.app.Authentication.Authentication
 import com.example.app.Authentication.AuthenticationRepository
 import com.example.app.Authentication.AuthenticationViewModel
 import com.example.app.Authentication.AuthenticationViewModelFactory
+import com.example.app.MainActivity
 import com.example.app.R
 import com.example.app.RetrofitInstance
 import com.example.app.User.UserRepository
 import com.example.app.User.UserViewModel
 import com.example.app.User.UserViewModelFactory
 import com.example.app.databinding.SignOutFragmentBinding
+import kotlinx.coroutines.*
 
 class SignOutFragment: Fragment() {
     private lateinit var userViewModel: UserViewModel
@@ -54,13 +57,13 @@ class SignOutFragment: Fragment() {
         var repository = UserRepository()
         val userFactory = UserViewModelFactory(repository)
         userViewModel = ViewModelProvider(this, userFactory).get(UserViewModel::class.java)
-        userViewModel.getUserById(RetrofitInstance.TOKENUSERID)
-        userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
-            Log.d("USERNAME", user.username)
-            binding.signOutUserName.text = user.username
-            Log.d("PROFILE", user.profile_image)
-            Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)
-        })
+        CoroutineScope(Dispatchers.Main).launch {
+            userViewModel.getUserById(RetrofitInstance.USER_ID)
+            userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
+                binding.signOutUserName.text = user.username
+                Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)
+            })
+        }
     }
 
     fun setShowContractBtn() {

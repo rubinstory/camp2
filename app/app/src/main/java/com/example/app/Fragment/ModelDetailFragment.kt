@@ -146,7 +146,7 @@ class ModelDetailFragment : Fragment() {
 
     fun setContractButtonToLogin() {
         binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
-            println("TOKENUSERID: " + RetrofitInstance.TOKENUSERID)
+            println("TOKENUSERID: " + RetrofitInstance.USER_ID)
             println("flag3")
             requireActivity().supportFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
@@ -197,7 +197,7 @@ class ModelDetailFragment : Fragment() {
             val requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), byteArrayOutputStream.toByteArray())
             val uploadFile = MultipartBody.Part.createFormData("signature", "something.jpeg", requestBody)
 
-            RetrofitInstance.api.make_contract(signatrue = uploadFile, influencerId, RetrofitInstance.TOKENUSERID).enqueue(object: Callback<Contract> {
+            RetrofitInstance.api.make_contract(signatrue = uploadFile, influencerId, RetrofitInstance.USER_ID).enqueue(object: Callback<Contract> {
                 override fun onResponse(call: Call<Contract>, response: Response<Contract>) {
                     val headers = response.headers()
                     Log.d("TAG", headers.toString())

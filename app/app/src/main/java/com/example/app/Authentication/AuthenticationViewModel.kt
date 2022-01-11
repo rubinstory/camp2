@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.app.MainActivity
 import com.example.app.RetrofitInstance
 import com.example.app.Token.Token
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,8 +27,9 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
                         val token = response.body()!!
                         RetrofitInstance.ACCESS_TOKEN = token.access_token
                         RetrofitInstance.REFRESH_TOKEN = token.refresh_token
-                        RetrofitInstance.TOKENUSERID = token.user.id
+                        RetrofitInstance.USER_ID = token.user.id
                         HTTP_STATUS.postValue(response.code())
+                        Log.d("RESULT", RetrofitInstance.USER_ID.toString())
                     }
                 }
 
@@ -44,9 +45,11 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
         viewModelScope.launch {
             authenticationRepository.logout().enqueue(object: Callback<Token>{
                 override fun onResponse(call: Call<Token>, response: Response<Token>) {
-                    RetrofitInstance.ACCESS_TOKEN = ""
-                    RetrofitInstance.REFRESH_TOKEN = ""
-                    RetrofitInstance.TOKENUSERID = -1
+                    CoroutineScope(Dispatchers.IO).async {
+                        RetrofitInstance.ACCESS_TOKEN = ""
+                        RetrofitInstance.REFRESH_TOKEN = ""
+                        RetrofitInstance.USER_ID = -1
+                    }
                 }
 
                 override fun onFailure(call: Call<Token>, t: Throwable) {

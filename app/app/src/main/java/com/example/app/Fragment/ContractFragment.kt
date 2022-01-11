@@ -52,7 +52,7 @@ class ContractFragment: Fragment() {
         val userViewModelRepository = UserViewModelFactory(repository)
 
         viewModel = ViewModelProvider(this, userViewModelRepository).get(UserViewModel::class.java)
-        viewModel.getUserById(RetrofitInstance.TOKENUSERID)
+        viewModel.getUserById(RetrofitInstance.USER_ID)
         viewModel.user.observe(viewLifecycleOwner, Observer { user ->
 
             if(user.is_admin){
