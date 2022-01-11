@@ -27,3 +27,9 @@ def get_user_by_id(request, pk):
         if request.method == "GET":
             s = UserSerializer(user, context={"request":request})
             return Response(s.data)
+
+@api_view(["GET"])
+def get_user_by_name(request, name):
+    user = User.objects.get(username=name)
+    result = UserSerializer(user, context={"request":request})
+    return Response(result.data)
