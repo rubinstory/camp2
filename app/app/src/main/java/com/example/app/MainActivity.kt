@@ -108,7 +108,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 else -> {
-                    RetrofitInstance.USER_ID = -1
                     binding.dropdownLoginBtn.setOnClickListener {
                         closeDropDownMenu()
                         supportFragmentManager.beginTransaction()

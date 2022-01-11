@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.app.MainActivity
 import com.example.app.RetrofitInstance
 import com.example.app.Token.Token
+import com.example.app.Token.TokenUser
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +17,7 @@ import retrofit2.http.HTTP
 
 class AuthenticationViewModel (private val repository: AuthenticationRepository): ViewModel() {
 
+    var USER: MutableLiveData<TokenUser> = MutableLiveData<TokenUser>()
     var HTTP_STATUS: MutableLiveData<Int> = MutableLiveData<Int>()
     var authenticationRepository: AuthenticationRepository = AuthenticationRepository()
 
@@ -28,6 +30,7 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
                         RetrofitInstance.ACCESS_TOKEN = token.access_token
                         RetrofitInstance.REFRESH_TOKEN = token.refresh_token
                         RetrofitInstance.USER_ID = token.user.id
+                        USER.postValue(token.user)
                         HTTP_STATUS.postValue(response.code())
                         Log.d("RESULT", RetrofitInstance.USER_ID.toString())
                     }
@@ -45,15 +48,15 @@ class AuthenticationViewModel (private val repository: AuthenticationRepository)
         viewModelScope.launch {
             authenticationRepository.logout().enqueue(object: Callback<Token>{
                 override fun onResponse(call: Call<Token>, response: Response<Token>) {
-                    CoroutineScope(Dispatchers.IO).async {
-                        RetrofitInstance.ACCESS_TOKEN = ""
-                        RetrofitInstance.REFRESH_TOKEN = ""
-                        RetrofitInstance.USER_ID = -1
-                    }
+                    RetrofitInstance.ACCESS_TOKEN = ""
+                    RetrofitInstance.REFRESH_TOKEN = ""
+                    RetrofitInstance.USER_ID = -1
                 }
 
                 override fun onFailure(call: Call<Token>, t: Throwable) {
-
+                    RetrofitInstance.ACCESS_TOKEN = ""
+                    RetrofitInstance.REFRESH_TOKEN = ""
+                    RetrofitInstance.USER_ID = -1
                 }
 
             })

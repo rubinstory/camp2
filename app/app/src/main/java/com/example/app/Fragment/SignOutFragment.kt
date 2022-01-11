@@ -57,13 +57,15 @@ class SignOutFragment: Fragment() {
         var repository = UserRepository()
         val userFactory = UserViewModelFactory(repository)
         userViewModel = ViewModelProvider(this, userFactory).get(UserViewModel::class.java)
-        CoroutineScope(Dispatchers.Main).launch {
-            userViewModel.getUserById(RetrofitInstance.USER_ID)
-            userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
-                binding.signOutUserName.text = user.username
-                Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)
-            })
-        }
+        userViewModel.getUserById(RetrofitInstance.USER_ID)
+//        userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
+//            binding.signOutUserName.text = user.username
+//            Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)
+//        })
+        userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
+            binding.signOutUserName.text = user.username
+            Glide.with(requireContext()).load(user.profile_image).into(binding.profileCircleView.modelProfileImg)
+        })
     }
 
     fun setShowContractBtn() {

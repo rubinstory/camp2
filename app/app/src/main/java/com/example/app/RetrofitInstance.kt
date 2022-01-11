@@ -8,7 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitInstance: Thread() {
+object RetrofitInstance {
 
     val BASE_URL:String = "http://192.249.18.201:80"
     var ACCESS_TOKEN: String = ""
