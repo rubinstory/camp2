@@ -46,7 +46,6 @@ class InfluencerAdapter(private val context: Context): RecyclerView.Adapter<Infl
         private val profileDescription: TextView = binding.mainFragmentModelProfileDescription
         private val profileCard: CardView = binding.modelProfileCardView
 
-
         fun bind(item: Influencer) {
             profileName.text = item.getFullName()
             profileDescription.text = item.description

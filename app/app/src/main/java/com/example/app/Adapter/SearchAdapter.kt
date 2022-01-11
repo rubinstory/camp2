@@ -1,16 +1,19 @@
 package com.example.app.Adapter
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -55,6 +58,11 @@ class SearchAdapter(private val context: Context): RecyclerView.Adapter<SearchAd
             profileName.text = item.getFullName()
 
             profileImg.setOnClickListener {
+                (context as MainActivity).currentFocus?.let { view ->
+                    val inputMethodManager = (context as MainActivity).getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+                }
+
                 val modelDetailFragment = ModelDetailFragment()
                 val bundle = Bundle()
                 bundle.putInt("id", item.id)

@@ -1,5 +1,6 @@
 package com.example.app.Fragment
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -69,6 +71,10 @@ class SignInFragment : Fragment() {
 
     fun setLogInBtn() {
         binding.loginBtn.setOnClickListener {
+            (context as MainActivity).currentFocus?.let { view ->
+                val inputMethodManager = (context as MainActivity).getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            }
             val repository = AuthenticationRepository()
             val authenticationViewModelFactory = AuthenticationViewModelFactory(repository)
             viewModel = ViewModelProvider(this, authenticationViewModelFactory).get(AuthenticationViewModel::class.java)
