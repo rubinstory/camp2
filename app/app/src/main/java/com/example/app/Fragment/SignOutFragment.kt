@@ -84,9 +84,12 @@ class SignOutFragment: Fragment() {
             viewModel = ViewModelProvider(this, authenticationViewModelFactory).get(AuthenticationViewModel::class.java)
             viewModel.logout()
 
+            RetrofitInstance.ACCESS_TOKEN = ""
+            RetrofitInstance.REFRESH_TOKEN = ""
+            RetrofitInstance.USER_ID = -1
             requireActivity().supportFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                .replace(R.id.fragment, SignInFragment())
+                .replace(R.id.fragment, MainFragment())
                 .commit()
         }
     }
