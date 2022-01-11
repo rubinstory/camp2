@@ -47,15 +47,17 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Header
 import android.graphics.BitmapFactory
-
-
-
+import com.example.app.Authentication.AuthenticationRepository
+import com.example.app.Authentication.AuthenticationViewModel
+import com.example.app.Authentication.AuthenticationViewModelFactory
 
 
 class ModelDetailFragment : Fragment() {
     private lateinit var imageAdapter: ImageAdapter
     private lateinit var videoAdapter: VideoAdapter
     private lateinit var viewModel: InfluencerViewModel
+
+    private lateinit var authenticateViewModel: AuthenticationViewModel
     private lateinit var contractviewModel: ContractViewModel
     private var influencerId: Int = 1
 
@@ -74,10 +76,24 @@ class ModelDetailFragment : Fragment() {
         videoAdapter = VideoAdapter(this.requireContext())
 
         initViewModel()
-        setContractButton()
+        getAuthentication()
         setTabLayout()
         activateFadeInAnimationForEachLinearLayouts()
         return binding.root
+    }
+
+    fun getAuthentication() {
+        val repository = AuthenticationRepository()
+        val authenticationViewModelFactory = AuthenticationViewModelFactory(repository)
+        authenticateViewModel = ViewModelProvider(this, authenticationViewModelFactory).get(AuthenticationViewModel::class.java)
+        authenticateViewModel.authenticateToken()
+        authenticateViewModel.HTTP_STATUS.observe(viewLifecycleOwner, Observer { status ->
+            when(status) {
+                200 -> setContractButtonToContract()
+                else -> setContractButtonToLogin()
+            }
+
+        })
     }
 
     fun setTabLayout() {
@@ -89,16 +105,9 @@ class ModelDetailFragment : Fragment() {
                 }
                 var animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
                 animation.duration = 1000
-//                requireActivity().findViewById<ImageView>(R.id.model_portfolio_item).startAnimation(animation)
-//                binding.modelDetailViewpager.startAnimation(animation)
             }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
     }
 
@@ -125,45 +134,34 @@ class ModelDetailFragment : Fragment() {
         binding.modelDetailViewpager.startAnimation(animation3)
     }
 
-
-    fun setContractButton() {
+    fun setContractButtonToContract() {
         binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
-
-            if(RetrofitInstance.TOKENUSERID == -1){
-                println("TOKENUSERID: " + RetrofitInstance.TOKENUSERID)
-                println("flag3")
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                    .replace(R.id.fragment, SignInFragment())
-                    .commit()
-            }
-            else{
-                binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
-
-                setSignaturePad()
-                contractDecline()
-                contractAccept()
-            }
+            binding.contractview.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED)
+            setSignaturePad()
+            contractDecline()
+            contractAccept()
+        })
+    }
 
 
-
+    fun setContractButtonToLogin() {
+        binding.twoBtnBar.modelContractBtn.setOnClickListener(View.OnClickListener {
+            println("TOKENUSERID: " + RetrofitInstance.TOKENUSERID)
+            println("flag3")
+            requireActivity().supportFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .replace(R.id.fragment, SignInFragment())
+                .commit()
         })
     }
 
     fun setSignaturePad(){
         binding.signaturepanel.signaturePad.setOnSignedListener(object: SignaturePad.OnSignedListener {
-            override fun onStartSigning() {
-                binding.signaturepanel.signatureText.visibility = View.INVISIBLE
-            }
+            override fun onStartSigning() { binding.signaturepanel.signatureText.visibility = View.INVISIBLE }
 
-            override fun onSigned() {
-                binding.signaturepanel.signatureText.visibility = View.INVISIBLE
-            }
+            override fun onSigned() { binding.signaturepanel.signatureText.visibility = View.INVISIBLE }
 
-            override fun onClear() {
-                binding.signaturepanel.signatureText.visibility = View.VISIBLE
-
-            }
+            override fun onClear() { binding.signaturepanel.signatureText.visibility = View.VISIBLE }
         })
 
         //touch outside of pannel
