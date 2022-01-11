@@ -51,7 +51,7 @@ class AdminContractAdapter(private var context: Context, private var influencer:
 
             influencerName.text = influencer.getFullName()
 
-            contractorName.text = influencer.contractList[item.id-1].user_id
+            contractorName.text = influencer.contractList[item.id-1].user_id.toString()
 
 //            val repository2 = UserRepository()
 //            val userViewModelRepository = UserViewModelFactory(repository2)
